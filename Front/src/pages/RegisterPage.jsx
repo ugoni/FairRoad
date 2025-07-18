@@ -5,12 +5,13 @@ import { register } from '../api/auth';
 function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [nickname, setNickname] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await register({ email, password });
+      await register({ email, password, nickname });
       // 회원가입 성공 후 로그인 페이지로 이동
       navigate('/login');
     } catch (error) {
@@ -40,6 +41,16 @@ function RegisterPage() {
             className="form-control"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className='mb-3'>
+          <label className="form-label">Nickname</label>
+          <input
+            type="text"
+            className="form-control"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
             required
           />
         </div>
