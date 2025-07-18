@@ -27,14 +27,14 @@ export const login = (credentials) => {
 
 /**
  * 사용자를 등록하는 가짜 API 함수
- * @param {{email: string, password: string}} userInfo - 사용자 이메일과 비밀번호
+ * @param {{email: string, password: string, nickname: string}} userInfo - 사용자 이메일과 비밀번호 및 닉네임
  * @returns {Promise<{success: boolean}>} 등록 성공 시 success: true를 포함한 Promise를 반환
  */
 export const register = (userInfo) => {
   console.log('Attempting to register with:', userInfo);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (userInfo.email && userInfo.password) {
+      if (userInfo.email && userInfo.password && userInfo.nickname) {
         console.log('Registration simulation successful');
         resolve({ success: true });
       } else {
