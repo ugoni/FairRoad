@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   padding: 30px 0;
-  background-color: #f0f2f5;
+  background-color: #EBEBEB;
   max-width: 450px;
   margin: 30px auto;
   border-radius: 16px;
@@ -31,6 +31,9 @@
   font-size: 2rem;
   color: #1c1e21;
 }
+.auth-form input::placeholder {
+    color: #828282;
+}
 
 .auth-form .form-control {
   margin-bottom: 0;
@@ -55,7 +58,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    background-color: #f0f2f5;
+    background-color: #EBEBEB;
 }
 
 .links-container {
