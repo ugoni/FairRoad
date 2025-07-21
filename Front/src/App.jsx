@@ -8,7 +8,6 @@ import Navbar from './components/Navbar';
 function App() {
   return (
     <Router>
-        
       <div className="container">
         <Navbar /> 
         <Routes>
