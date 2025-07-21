@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import slogan from './assets/slogan.png';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/">Home</Link>
+            <Link className="navbar-brand" to="/"><img src={slogan} alt="Slogan" style={{ width: '100px' }} /></Link>
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
