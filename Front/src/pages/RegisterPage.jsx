@@ -36,6 +36,17 @@ function RegisterPage() {
               required
             />
           </div>
+          <div className='mb-3'>
+            <label className="form-label">User name</label>
+            <input
+              type="text"
+              className="form-control"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
+              placeholder="User name"
+              required
+            />
+          </div>
           <div className="mb-3">
             <label className="form-label">Password</label>
             <input
@@ -47,14 +58,14 @@ function RegisterPage() {
               required
             />
           </div>
-          <div className='mb-3'>
-            <label className="form-label">Nickname</label>
+          <div className="mb-3">
+            <label className="form-label">Confirm Password</label>
             <input
-              type="text"
+              type="password"
               className="form-control"
-              value={nickname}
-              onChange={(e) => setNickname(e.target.value)}
-              placeholder="Nickname"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Confirm Password"
               required
             />
           </div>
