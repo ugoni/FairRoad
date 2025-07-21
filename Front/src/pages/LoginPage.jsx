@@ -4,6 +4,7 @@ import { login } from '../api/auth';
 import './AuthPage.css';
 import slogan from '../assets/slogan.png';
 
+
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -49,6 +50,9 @@ return (
         </div>
         <button type="submit" className="btn btn-primary">Sign in</button>
       </form>
+          <div className="divider-with-text">
+            <span>Or continue with</span>
+          </div>
     </div>
     <p className="mt-3 text-center">
       Don't have an account? <Link to="/register">Sign up</Link>

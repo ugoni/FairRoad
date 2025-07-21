@@ -76,3 +76,27 @@
 .auth-form a:hover {
   text-decoration: underline;
 }
+
+.divider-with-text {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 24px 0; /* 위아래 간격 조정 */
+  color: #828282;
+  font-size: 0.9em;
+}
+
+.divider-with-text::before,
+.divider-with-text::after {
+  content: "";
+  flex: 1;
+  border-bottom: 3px solid #ccc;
+}
+
+.divider-with-text::before {
+  margin-right: 12px;
+}
+
+.divider-with-text::after {
+  margin-left: 12px;
+}

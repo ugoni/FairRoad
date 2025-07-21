@@ -71,6 +71,9 @@ function RegisterPage() {
             />
           </div>
           <button type="submit" className="btn btn-primary">Sign up</button>
+          <div className="divider-with-text">
+            <span>Or continue with</span>
+          </div>
         </form>
       </div>
       <p className="mt-3">
