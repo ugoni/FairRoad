@@ -4,12 +4,12 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import slogan from './assets/slogan.png';
-
+import './App.css';
 function App() {
   return (
     <Router>
       <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light">
+        <nav className="navbar navbar-expand-lg navbar-light dark-divider">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/"><img src={slogan} alt="Slogan" style={{ width: '100px' }} /></Link>
             <div className="collapse navbar-collapse">
