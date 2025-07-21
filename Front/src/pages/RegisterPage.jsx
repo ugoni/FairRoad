@@ -23,7 +23,7 @@ function RegisterPage() {
   return (
     <div className="auth-container">
       <div className="auth-form">
-        <p style={{ fontWeight: 'bold', fontSize: '1.2em', marginBottom: '0' }}>Sign in to Continue</p>
+        <p style={{ fontWeight: 'bold', fontSize: '1.2em', marginBottom: '0' }}>Sign up to Continue</p>
         <p style={{ color: 'grey' }}>Please sign up to start Fair Road's service.</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
