@@ -60,10 +60,10 @@ function RegisterPage() {
           </div>
           <button type="submit" className="btn btn-primary">Sign up</button>
         </form>
-        <p className="mt-3">
-          Already have an account? <Link to="/login">Sign in</Link>
-        </p>
       </div>
+      <p className="mt-3">
+        Already have an account? <Link to="/login">Sign in</Link>
+      </p>
     </div>
   );
 }
