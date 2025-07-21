@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import slogan from '../assets/slogan.png'; 
+import searchIcon from '../assets/searchIcon.png';
 
 function Navbar() {
   return (
@@ -19,7 +20,18 @@ function Navbar() {
               aria-label="Search"
               style={{ width: '200px' }}
             />
-            <button className="btn btn-outline-primary btn-sm" type="submit">Search</button>
+            <button
+                className="btn btn-outline-primary btn-sm p-1"
+                type="submit"
+                style={{
+                  border: 'none',
+                  background: 'none',
+                  padding: 0,
+                  outline: 'none'
+                }}>
+                <img src={searchIcon} alt="Search" 
+                      style={{ width: '16px', height: '16px' }}/>
+              </button>
           </form>
           <ul className="navbar-nav">
             <li className="nav-item">
