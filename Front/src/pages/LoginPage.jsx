@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { login } from '../api/auth';
-import './LoginPage.css';
+import './AuthPage.css';
+import slogan from '../assets/slogan.png';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -18,9 +19,11 @@ function LoginPage() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-form">
-        <h1>Login</h1>
+    <div className="auth-container">
+      <div className="auth-form">
+        <img src={slogan} alt="Slogan" style={{ width: '100%', marginBottom: '20px' }} />
+        <p style={{ fontWeight: 'bold', fontSize: '1.2em', marginBottom: '0' }}>Sign in to Continue</p>
+        <p style={{ color: 'grey' }}>Please sign in to start Fair Road's service.</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Email address</label>
