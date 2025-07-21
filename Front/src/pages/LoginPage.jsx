@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { login } from '../api/auth';
-import './AuthPage.css';
+import '../css/AuthPage.css';
 import slogan from '../assets/slogan.png';
 
 
