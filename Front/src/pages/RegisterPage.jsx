@@ -10,7 +10,7 @@ function RegisterPage() {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [nickname, setNickname] = useState('');
   const navigate = useNavigate();
-
+  const [agreed, setAgreed] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -20,7 +20,12 @@ function RegisterPage() {
       console.error('Registration failed:', error);
     }
   };
-
+  const isFormValid =
+    email.trim() !== '' &&
+    nickname.trim() !== '' &&
+    password.trim() !== '' &&
+    password === passwordConfirm &&
+    agreed;
   return (
     <div className="auth-container">
       <div className="auth-form">
@@ -72,10 +77,21 @@ function RegisterPage() {
             />
           </div>
           <div className="checkbox-row">
-            <input id="checkbox" type="checkbox" />
+            <input
+              id="checkbox"
+              type="checkbox"
+              checked={agreed}
+              onChange={(e) => setAgreed(e.target.checked)}
+            />
             <label htmlFor="checkbox">개인 정보 수정 동의</label>
           </div>
-          <button type="submit" className="btn btn-primary">Sign up</button>
+          <button
+            type="submit"
+            className={`btn btn-submit ${isFormValid ? '' : 'disabled'}`}
+            disabled={!isFormValid}
+          >
+            Sign up
+          </button>
           <div className="divider-with-text">
             <span>Or continue with</span>
           </div>
