@@ -6,8 +6,22 @@
   color: #333;               
   font-size: 14px;
   outline: none;
+  width: 300px;
+  transition: width 0.3s ease;
 }
 
 .search-input::placeholder {
   color: #888;
+}
+@media (max-width: 992px) {
+  .search-input {
+    width: 200px;
+  }
+}
+
+/* 모바일 사이즈일 때 */
+@media (max-width: 576px) {
+  .search-input {
+    width: 100px;
+  }
 }
