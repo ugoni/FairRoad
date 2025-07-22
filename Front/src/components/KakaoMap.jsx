@@ -33,7 +33,7 @@ function KakaoMap() {
     <div className="map-wrapper">
       <Map
         center={{ lat: 37.5665, lng: 126.978 }}
-        style={{ width: '100%', height: '400px', borderRadius: '12px' }}
+        style={{ width: '100%', height: '400px', borderRadius: '12px', border: '2px solid #ccc' }}
         level={8}
         onBoundsChanged={handleBoundsChanged}
         onClick={() => setSelectedMarker(null)}
