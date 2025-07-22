@@ -140,3 +140,35 @@
   white-space: nowrap;
   cursor: pointer;
 }
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px; /* 버튼 간 간격 */
+  margin-top: 16px;
+}
+
+.social-btn {
+  width: 80px;
+  height: 80px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.social-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.social-btn img {
+  width: 60px;
+  height: 65px;
+  object-fit: contain;
+  border-radius: 15px;
+}

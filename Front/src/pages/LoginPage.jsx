@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import { login } from '../api/auth';
 import '../css/AuthPage.css';
 import slogan from '../assets/slogan.png';
+import appleIcon from '../assets/appleIcon.png';
+import googleIcon from '../assets/googleIcon.jpg';
+import kakaoIcon from '../assets/kakaoIcon.jpg';
+import naverIcon from '../assets/naverIcon.png';
 
 
 function LoginPage() {
@@ -52,6 +56,12 @@ return (
       </form>
           <div className="divider-with-text">
             <span>Or continue with</span>
+          </div>
+          <div className="social-buttons">
+            <button className="social-btn"><img src={googleIcon} alt="googleIcon" /></button>
+            <button className="social-btn"><img src={appleIcon} alt="appleIDcon" /></button>
+            <button className="social-btn"><img src={naverIcon} alt="naverIcon" /></button>
+            <button className="social-btn"><img src={kakaoIcon} alt="kakaoIcon" /></button>
           </div>
     </div>
     <p className="mt-3 text-center">
