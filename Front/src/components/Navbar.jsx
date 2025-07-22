@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import slogan from '../assets/slogan.png'; 
 import searchIcon from '../assets/searchIcon.png';
-
+import '../css/Navbar.css';
 function Navbar() {
   return (
   <nav className="navbar navbar-expand-lg navbar-light dark-divider">
@@ -14,11 +14,11 @@ function Navbar() {
         <div className="ms-auto d-flex align-items-center">
           <form className="d-flex me-3" role="search" onSubmit={(e) => e.preventDefault()}>
             <input
-              className="form-control form-control-sm me-2"
+              className="form-control form-control-sm me-2 search-input"
               type="search"
               placeholder="Search"
               aria-label="Search"
-              style={{ width: '200px' }}
+              style={{ width: '400px' }}
             />
             <button
                 className="btn btn-outline-primary btn-sm p-1"
