@@ -100,3 +100,27 @@
 .divider-with-text::after {
   margin-left: 12px;
 }
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 4px;            /* 요소 간 아주 작게 떨어지도록 */
+  font-size: 0.9rem;
+  width: 100%;
+  justify-content: center;
+}
+
+/* 체크박스 크기 설정 */
+.checkbox-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* 레이블 글자 정렬 */
+.checkbox-row label {
+  white-space: nowrap; /* 줄바꿈 방지 */
+  cursor: pointer;
+}

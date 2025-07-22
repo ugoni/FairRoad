@@ -7,6 +7,7 @@ import '../css/AuthPage.css';
 function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [nickname, setNickname] = useState('');
   const navigate = useNavigate();
 
@@ -64,11 +65,15 @@ function RegisterPage() {
             <input
               type="password"
               className="form-control"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={passwordConfirm}
+              onChange={(e) => setPasswordConfirm(e.target.value)}
               placeholder="Confirm Password"
               required
             />
+          </div>
+          <div className="checkbox-row">
+            <input id="checkbox" type="checkbox" />
+            <label htmlFor="checkbox">개인 정보 수정 동의</label>
           </div>
           <button type="submit" className="btn btn-primary">Sign up</button>
           <div className="divider-with-text">
