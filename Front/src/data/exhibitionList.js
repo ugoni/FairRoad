@@ -1,4 +1,4 @@
-const topics = [
+const exhibition = [
   // 문화·예술·라이프스타일
   "예술 & 디자인",
   "패션 & 뷰티",
@@ -62,4 +62,4 @@ const topics = [
   "콘텐츠 / 미디어 / 출판"
 ];
 
-export default topics;
+export default exhibition;
