@@ -2,13 +2,9 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { dummyExhibitions } from '../data/dummyExhibitions';
-
-// Swiper 스타일 import
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
-// 사용자 정의 스타일
 import '../css/ExhibitionSlider.css';
 
 const ExhibitionSlider = () => {
