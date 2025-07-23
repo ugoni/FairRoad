@@ -97,6 +97,12 @@ function RegisterPage() {
               <div
                 className="privacy-box"
                 onClick={(e) => e.stopPropagation()} >
+              <button
+                  className="close-button"
+                  onClick={() => setShowPrivacy(false)}
+                >
+                  &times;
+              </button>
               <div className="privacy-left">
                 <h5>[개인정보 수집 및 이용 동의]</h5>
                 <p><strong style={{ fontFamily: 'monospace' }}>FairRoad</strong>는 다음과 같이 개인정보를 수집 및 이용하고 있습니다.</p>
