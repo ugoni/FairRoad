@@ -52,8 +52,7 @@ function Navbar() {
               }}
             >
             <img width="25" height="25" 
-                src="https://img.icons8.com/ios-filled/50/search--v1.png" 
-                alt="search--v1"/>
+                src="https://img.icons8.com/ios-filled/50/135b65/search.png" alt="search"/>
             </button>
           </form>
           <div className="dropdown" ref={menuRef}>
@@ -68,9 +67,8 @@ function Navbar() {
                 cursor: 'pointer',
               }}
             >
-              <img width="25" height="25" 
-                  src="https://img.icons8.com/ios/50/menu--v7.png" 
-                  alt="menu--v7"/>
+            <img width="25" height="25" 
+                src="https://img.icons8.com/ios-filled/50/135b65/menu.png" alt="menu"/>
             </button>
             {showMenu && (
               <ul
