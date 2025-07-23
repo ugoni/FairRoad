@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import slogan from '../assets/slogan.png';
-import searchIcon from '../assets/searchIcon.png';
-import menuIcon from '../assets/menuIcon.png';
 import '../css/Navbar.css';
 
 function Navbar() {
@@ -53,14 +51,11 @@ function Navbar() {
                 outline: 'none',
               }}
             >
-              <img
-                src={searchIcon}
-                alt="Search"
-                style={{ width: '16px', height: '16px' }}
-              />
+            <img width="25" height="25" 
+                src="https://img.icons8.com/ios-filled/50/search--v1.png" 
+                alt="search--v1"/>
             </button>
           </form>
-
           <div className="dropdown" ref={menuRef}>
             <button
               className="menu-button"
@@ -73,7 +68,9 @@ function Navbar() {
                 cursor: 'pointer',
               }}
             >
-              <img src={menuIcon} alt="Menu" style={{ width: '28px', height: '28px' }} />
+              <img width="25" height="25" 
+                  src="https://img.icons8.com/ios/50/menu--v7.png" 
+                  alt="menu--v7"/>
             </button>
             {showMenu && (
               <ul
