@@ -1,0 +1,40 @@
+.topic-selector {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.topic-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  height: 50px; /* Fixed height */
+  width: 300px; /* Fixed width */
+}
+
+.topic-button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.topic-emoji {
+  margin-top: 1rem;
+  font-size: 1rem; /* Larger emoji */
+  margin-bottom: 0.5rem;
+}
+
+.topic-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #495057;
+  margin-bottom: 1rem;
+}
