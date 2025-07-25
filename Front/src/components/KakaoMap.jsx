@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Map, MapMarker, MapInfoWindow } from 'react-kakao-maps-sdk';
 import { dummyExhibitions } from '../data/dummyExhibitions';
 import '../css/KakaoMap.css';
@@ -6,8 +6,9 @@ import '../css/KakaoMap.css';
 function KakaoMap() {
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [bounds, setBounds] = useState(null);
+  const mapRef = useRef();
 
-    const handleBoundsChanged = (map) => {
+  const handleBoundsChanged = (map) => {
     const newBounds = map.getBounds();
     setBounds(newBounds);
   };
@@ -28,6 +29,17 @@ function KakaoMap() {
     isVisible(exhibition.latlng)
   );
 
+  const zoomIn = () => {
+    const map = mapRef.current;
+    if (!map) return;
+    map.setLevel(map.getLevel() - 1);
+  };
+
+  const zoomOut = () => {
+    const map = mapRef.current;
+    if (!map) return;
+    map.setLevel(map.getLevel() + 1);
+  };
 
   return (
     <div className="map-wrapper">
@@ -37,6 +49,7 @@ function KakaoMap() {
         level={8}
         onBoundsChanged={handleBoundsChanged}
         onClick={() => setSelectedMarker(null)}
+        ref={mapRef}
       >
         {dummyExhibitions.map((exhibition) => (
           <MapMarker
@@ -77,6 +90,14 @@ function KakaoMap() {
             </li>
           ))}
         </ul>
+      </div>
+      <div className="zoom-controls">
+        <button onClick={zoomOut} className="zoom-button">
+          -
+        </button>
+        <button onClick={zoomIn} className="zoom-button">
+          +
+        </button>
       </div>
     </div>
   );
