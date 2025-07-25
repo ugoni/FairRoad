@@ -6,19 +6,36 @@ function TopicSelector() {
   const topics = Object.keys(topicList);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedTopic, setSelectedTopic] = useState(null);
+  const [buttonWidth, setButtonWidth] = useState(0);
   const intervalRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   const visibleTopics = 8;
+  const topicButtonGap = 16;
   const maxIndex = topics.length > visibleTopics ? topics.length - visibleTopics : 0;
 
   useEffect(() => {
-   
+    const calculateButtonWidth = () => {
+      if (wrapperRef.current) {
+        const wrapperWidth = wrapperRef.current.offsetWidth;
+        const newButtonWidth = (wrapperWidth - (topicButtonGap * (visibleTopics - 1))) / visibleTopics;
+        setButtonWidth(newButtonWidth);
+      }
+    };
+
+    calculateButtonWidth();
+    window.addEventListener('resize', calculateButtonWidth);
+
+    return () => window.removeEventListener('resize', calculateButtonWidth);
+  }, []);
+
+  useEffect(() => {
     clearInterval(intervalRef.current);
 
     if (selectedTopic === null && topics.length > visibleTopics) {
       intervalRef.current = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % (maxIndex + 1));
-      }, 10000); 
+      }, 10000);
     }
 
     return () => clearInterval(intervalRef.current);
@@ -28,12 +45,10 @@ function TopicSelector() {
     setSelectedTopic(prevSelected => (prevSelected === topic ? null : topic));
   };
 
-  const topicButtonWidth = 120;
-  const topicButtonGap = 16; 
-  const scrollAmount = topicButtonWidth + topicButtonGap;
+  const scrollAmount = buttonWidth + topicButtonGap;
 
   return (
-    <div className="topic-selector-wrapper">
+    <div className="topic-selector-wrapper" ref={wrapperRef}>
       <div
         className="topic-selector"
         style={{ transform: `translateX(-${currentIndex * scrollAmount}px)` }}
@@ -46,6 +61,7 @@ function TopicSelector() {
               key={topic}
               className={`topic-button ${selectedTopic === topic ? 'selected' : ''}`}
               onClick={() => handleTopicClick(topic)}
+              style={{ width: `${buttonWidth}px` }}
             >
               <span className="topic-emoji">{emoji}</span>
               <span className="topic-name">{name}</span>

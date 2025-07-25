@@ -1,8 +1,7 @@
 .topic-selector-wrapper {
+  width: 100%;
   overflow: hidden;
   position: relative;
-  max-width: calc(8 * 120px + 7 * 1rem);
-  margin: 0 auto; 
 }
 
 .topic-selector {
@@ -17,15 +16,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
   border: 1px solid #dee2e6;
   border-radius: 10px;
   background-color: #fff;
   cursor: pointer;
   text-align: center;
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out, background-color 0.2s, color 0.2s;
-  height: 50px;
-  width: 120px; 
+  height: 60px;
+  width: 140px; 
   flex-shrink: 0; 
 }
 
