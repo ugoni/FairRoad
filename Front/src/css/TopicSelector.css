@@ -33,14 +33,14 @@
 }
 
 .topic-button.selected {
-  background-color: #007bff;
+  background-color: #DBF9FF;
   color: white;
-  border-color: #007bff;
+  border-color: #DBF9FF;
 }
 
-.topic-button.selected .topic-name {
+/* .topic-button.selected .topic-name {
   color: white;
-}
+} */
 
 .topic-emoji {
   margin-top: 1rem;
