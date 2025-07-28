@@ -109,7 +109,7 @@ function RegisterPage() {
               <img src={googleIcon} alt="googleIcon" />
             </button>
             <button className="social-btn" onClick={() => alert('Apple login coming soon!')}>
-              <img src={appleIcon} alt="appleIDcon" />
+              <img src={appleIcon} alt="appleIcon" />
             </button>
             <button className="social-btn" onClick={() => alert('Naver login coming soon!')}>
               <img src={naverIcon} alt="naverIcon" />

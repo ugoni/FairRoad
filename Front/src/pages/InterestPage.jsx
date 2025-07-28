@@ -37,12 +37,12 @@ function InterestPage() {
         </div>
       </div>
       <button
-          type="button"
-          className="btn btn-interest-submit"
-          onClick={handleSubmit}
-          disabled={selectedInterests.length === 0}
-        >
-          Sign up
+        type="button"
+        className="btn btn-interest-submit"
+        onClick={handleSubmit}
+        disabled={selectedInterests.length < 3}
+      >
+        Sign up
       </button>
     </div>
   );
