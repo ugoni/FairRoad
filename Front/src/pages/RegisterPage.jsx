@@ -19,7 +19,7 @@ function RegisterPage() {
     e.preventDefault();
     try {
       await register({ email, password, nickname });
-      navigate('/login');
+      navigate('/interest');
     } catch (error) {
       console.error('Registration failed:', error);
     }

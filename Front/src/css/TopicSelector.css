@@ -38,10 +38,6 @@
   border-color: #DBF9FF;
 }
 
-/* .topic-button.selected .topic-name {
-  color: white;
-} */
-
 .topic-emoji {
   margin-top: 1rem;
   font-size: 1rem;
@@ -53,4 +49,10 @@
   font-weight: 500;
   color: #495057;
   margin-bottom: 1rem;
+}
+
+.btn-submit {
+  margin-top: 2rem;
+  padding: 0.75rem 1rem; 
+
 }
