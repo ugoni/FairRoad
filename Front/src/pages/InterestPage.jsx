@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import topicList from '../data/topicList';
+import interestList from '../data/topicList';
 import '../css/InterestPage.css';
 
 function InterestPage() {
-  const [selectedTopics, setSelectedTopics] = useState([]);
+  const [selectedInterests, setSelectedInterests] = useState([]);
   const navigate = useNavigate();
 
-  const handleTopicClick = (topic) => {
-    setSelectedTopics(prevSelectedTopics =>
-      prevSelectedTopics.includes(topic)
-        ? prevSelectedTopics.filter(t => t !== topic)
-        : [...prevSelectedTopics, topic]
+  const handleInterestClick = (Interest) => {
+    setSelectedInterests(prevSelectedInterests =>
+      prevSelectedInterests.includes(Interest)
+        ? prevSelectedInterests.filter(t => t !== Interest)
+        : [...prevSelectedInterests, Interest]
     );
   };
 
   const handleSubmit = () => {
-    console.log('Selected topics:', selectedTopics);
+    console.log('Selected Interests:', selectedInterests);
     navigate('/'); 
   };
 
@@ -24,14 +24,14 @@ function InterestPage() {
     <div className="auth-container">
       <div className="auth-form">
         <p style={{ fontWeight: 'bold', fontSize: '2em', marginBottom: '0' }}>Choose your interests</p>
-        <div className="topic-container">
-          {Object.values(topicList).flat().map(topic => (
+        <div className="interest-container">
+          {Object.values(interestList).flat().map(Interest => (
             <button
-              key={topic}
-              className={`topic-btn ${selectedTopics.includes(topic) ? 'selected' : ''}`}
-              onClick={() => handleTopicClick(topic)}
+              key={Interest}
+              className={`interest-btn ${selectedInterests.includes(Interest) ? 'selected' : ''}`}
+              onClick={() => handleInterestClick(Interest)}
             >
-              {topic}
+              {Interest}
             </button>
           ))}
         </div>
@@ -40,7 +40,7 @@ function InterestPage() {
           type="button"
           className="btn btn-interest-submit"
           onClick={handleSubmit}
-          disabled={selectedTopics.length === 0}
+          disabled={selectedInterests.length === 0}
         >
           Sign up
       </button>
