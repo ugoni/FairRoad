@@ -58,10 +58,10 @@ return (
             <span>Or continue with</span>
           </div>
           <div className="social-buttons">
-            <button className="social-btn"><img src={googleIcon} alt="googleIcon" /></button>
-            <button className="social-btn"><img src={appleIcon} alt="appleIDcon" /></button>
-            <button className="social-btn"><img src={naverIcon} alt="naverIcon" /></button>
-            <button className="social-btn"><img src={kakaoIcon} alt="kakaoIcon" /></button>
+            <button className="social-btn" onClick={() => alert('Google login not implemented yet')}><img src={googleIcon} alt="googleIcon" /></button>
+            <button className="social-btn" onClick={() => alert('Apple login not implemented yet')}><img src={appleIcon} alt="appleIDcon" /></button>
+            <button className="social-btn" onClick={() => alert('Naver login not implemented yet')}><img src={naverIcon} alt="naverIcon" /></button>
+            <button className="social-btn" onClick={() => alert('Kakao login not implemented yet')}><img src={kakaoIcon} alt="kakaoIcon" /></button>
           </div>
     </div>
     <p className="mt-3 text-center">
