@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import topicList from '../data/topicList';
-import '../css/AuthPage.css';
 import '../css/InterestPage.css';
 
 function InterestPage() {
@@ -39,7 +38,7 @@ function InterestPage() {
       </div>
       <button
           type="button"
-          className="btn btn-submit"
+          className="btn btn-interest-submit"
           onClick={handleSubmit}
           disabled={selectedTopics.length === 0}
         >

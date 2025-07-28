@@ -51,8 +51,23 @@
   margin-bottom: 1rem;
 }
 
-.btn-submit {
-  margin-top: 2rem;
-  padding: 0.75rem 1rem; 
+.btn-interest-submit {
+  width: calc(100% - 40px); /* 양쪽에 각각 20px 여백 */
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 12px;
+  background-color: #1A9BAD;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 2rem 20px 0 20px; /* 상단 2rem, 좌우 20px 여백 */
+}
 
+.btn-interest-submit:disabled {
+  background-color: #495057;
+  color: white;
+  cursor: not-allowed;
+  border: none;
 }
