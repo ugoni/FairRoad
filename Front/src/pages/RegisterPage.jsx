@@ -130,7 +130,7 @@ function RegisterPage() {
             className={`btn btn-submit ${isFormValid ? '' : 'disabled'}`}
             disabled={!isFormValid}
           >
-            Sign up
+            Next
           </button>
           <div className="divider-with-text">
             <span>Or continue with</span>
