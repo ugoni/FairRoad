@@ -59,7 +59,7 @@ return (
           </div>
           <div className="social-buttons">
             <button className="social-btn" onClick={() => alert('Google login not implemented yet')}><img src={googleIcon} alt="googleIcon" /></button>
-            <button className="social-btn" onClick={() => alert('Apple login not implemented yet')}><img src={appleIcon} alt="appleIDcon" /></button>
+            <button className="social-btn" onClick={() => alert('Apple login not implemented yet')}><img src={appleIcon} alt="appleIcon" /></button>
             <button className="social-btn" onClick={() => alert('Naver login not implemented yet')}><img src={naverIcon} alt="naverIcon" /></button>
             <button className="social-btn" onClick={() => alert('Kakao login not implemented yet')}><img src={kakaoIcon} alt="kakaoIcon" /></button>
           </div>
