@@ -71,3 +71,11 @@
   cursor: not-allowed;
   border: none;
 }
+
+.select-guide-text {
+  text-align: center;
+  font-size: 3rem;
+  color: black;
+  margin-bottom: 8px;
+  margin-top: 60px;
+}
