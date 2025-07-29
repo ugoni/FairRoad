@@ -1,4 +1,3 @@
-// ExhibitionCard.jsx
 import React from 'react';
 import '../css/ExhibitionCard.css';
 
