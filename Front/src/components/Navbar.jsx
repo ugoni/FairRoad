@@ -24,10 +24,15 @@ function Navbar() {
   return (
     <nav className="navbar px-3 dark-divider" style={{ backgroundColor: '#ffffff' }}>  
       <div className="container-fluid d-flex justify-content-between align-items-center">
-        {/* 로고 */}
-        <Link className="navbar-brand" to="/">
-          <img src={slogan} alt="Slogan" style={{ width: '100px' }} />
-        </Link>
+        {/* 로고와 홈 아이콘 */}
+        <div className="d-flex align-items-center">
+          <Link className="navbar-brand" to="/">
+            <img src={slogan} alt="Slogan" style={{ width: '100px' }} />
+          </Link>
+          <Link to="/">
+            <img width="30" height="30" src="https://img.icons8.com/fluency-systems-regular/48/135b65/home--v1.png" alt="home--v1"/>
+          </Link>
+        </div>
 
         <div className="d-flex align-items-center">
           <form
