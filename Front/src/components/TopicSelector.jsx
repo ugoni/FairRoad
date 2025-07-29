@@ -67,8 +67,12 @@ function TopicSelector() {
               <span className="topic-name">{name}</span>
             </button>
           );
+          
         })}
       </div>
+            {selectedTopic === null &&(
+        <div className='select-guide-text'>Choose a topic you're interested in!</div>
+      )}
     </div>
   );
 }
