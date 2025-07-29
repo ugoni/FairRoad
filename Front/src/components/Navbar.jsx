@@ -87,6 +87,7 @@ function Navbar() {
                 }}
               >
                 <li><Link className="dropdown-item" to="/mypage">마이페이지</Link></li>
+                <li><Link className="dropdown-item" to="/topics">토픽페이지(예비)</Link></li>
                 <li><Link className="dropdown-item" to="/calendar">캘린더</Link></li>
                 <li><Link className="dropdown-item" to="/settings">설정</Link></li>
                 <li><Link className="dropdown-item" to="/login">로그인</Link></li>
