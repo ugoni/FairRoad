@@ -2,10 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import topicList from '../data/topicList.js';
 import '../css/TopicSelector.css';
 
-function TopicSelector() {
+function TopicSelector({ selectedTopic: externalSelected, setSelectedTopic: externalSetSelected }) {
   const topics = Object.keys(topicList);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedTopic, setSelectedTopic] = useState(null);
+
+  const [internalSelected, setInternalSelected] = useState(null);
+
+  const selectedTopic = externalSelected !== undefined ? externalSelected : internalSelected;
+  const setSelectedTopic = externalSetSelected !== undefined ? externalSetSelected : setInternalSelected;
+
   const [buttonWidth, setButtonWidth] = useState(0);
   const intervalRef = useRef(null);
   const wrapperRef = useRef(null);
@@ -42,7 +47,7 @@ function TopicSelector() {
   }, [selectedTopic, topics.length, maxIndex]);
 
   const handleTopicClick = (topic) => {
-    setSelectedTopic(prevSelected => (prevSelected === topic ? null : topic));
+    setSelectedTopic(prev => (prev === topic ? null : topic));
   };
 
   const scrollAmount = buttonWidth + topicButtonGap;
@@ -67,11 +72,10 @@ function TopicSelector() {
               <span className="topic-name">{name}</span>
             </button>
           );
-          
         })}
       </div>
-            {selectedTopic === null &&(
-        <div className='select-guide-text'>Choose a topic you're interested in!</div>
+      {selectedTopic === null && (
+        <div className="select-guide-text">Choose a topic you're interested in!</div>
       )}
     </div>
   );
