@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/ExhibitionList.css';
 
-function Exhibitionlist({ exhibition }) {
+function ExhibitionList({ exhibition }) {
 
   return (
     <div className="exhibition-list">
@@ -20,4 +20,4 @@ function Exhibitionlist({ exhibition }) {
   );
 }
 
-export default Exhibitionlist;
+export default ExhibitionList;
