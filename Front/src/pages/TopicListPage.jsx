@@ -34,7 +34,6 @@ function TopicListPage() {
 
   return (
     <div className="mt-4">
-      <h1 className="mb-2 fw-bold mt-4">Collect by Topic</h1>
       <TopicSelector selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} />
 
       <div className="exhibition-grid mt-4">

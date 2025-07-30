@@ -53,7 +53,9 @@ function TopicSelector({ selectedTopic: externalSelected, setSelectedTopic: exte
   const scrollAmount = buttonWidth + topicButtonGap;
 
   return (
+
     <div className="topic-selector-wrapper" ref={wrapperRef}>
+      <h1 className="mb-2 fw-bold mt-4">Collect by Topic</h1>
       <div
         className="topic-selector"
         style={{ transform: `translateX(-${currentIndex * scrollAmount}px)` }}
