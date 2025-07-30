@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Exhibitionlist.css';
+import '../css/ExhibitionList.css';
 
 function Exhibitionlist({ exhibition }) {
 
