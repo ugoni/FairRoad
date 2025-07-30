@@ -1,6 +1,6 @@
 const topics = ["🎨 문화", "💻 IT", "🏭 산업", "🌿 환경"];
 
-const dummyExhibitions2 = Array.from({ length: 50 }, (_, index) => {
+const dummyExhibitions2 = Array.from({ length: 100 }, (_, index) => {
   const topic = topics[index % topics.length];
   return {
     id: index + 1,
