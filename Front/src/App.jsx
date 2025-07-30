@@ -5,7 +5,6 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import InterestPage from './pages/InterestPage';
 import TopicListPage from './pages/TopicListPage';
-import './css/App.css';
 import Navbar from './components/Navbar';
 function App() {
   return (
