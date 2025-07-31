@@ -6,11 +6,13 @@ import '../css/KakaoMap.css';
 function KakaoMap() {
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [bounds, setBounds] = useState(null);
+  const [zoomLevel, setZoomLevel] = useState(8);
   const mapRef = useRef();
 
   const handleBoundsChanged = (map) => {
     const newBounds = map.getBounds();
     setBounds(newBounds);
+    setZoomLevel(map.getLevel());
   };
 
   const isVisible = (latlng) => {
@@ -32,13 +34,17 @@ function KakaoMap() {
   const zoomIn = () => {
     const map = mapRef.current;
     if (!map) return;
-    map.setLevel(map.getLevel() - 1);
+    const newLevel = Math.max(1, map.getLevel() - 1);
+    map.setLevel(newLevel);
+    setZoomLevel(newLevel);
   };
 
   const zoomOut = () => {
     const map = mapRef.current;
     if (!map) return;
-    map.setLevel(map.getLevel() + 1);
+    const newLevel = Math.min(14, map.getLevel() + 1);
+    map.setLevel(newLevel);
+    setZoomLevel(newLevel);
   };
 
   return (
@@ -46,7 +52,7 @@ function KakaoMap() {
       <Map
         center={{ lat: 37.5665, lng: 126.978 }}
         style={{ width: '100%', height: '400px', borderRadius: '12px', border: '2px solid #ccc' }}
-        level={8}
+        level={zoomLevel}
         onBoundsChanged={handleBoundsChanged}
         onClick={() => setSelectedMarker(null)}
         ref={mapRef}
@@ -72,7 +78,7 @@ function KakaoMap() {
         )}
       </Map>
       <div className="map-floating-list">
-        <ul className="list-group">
+        <ul className="list-unstyled">
           {visibleExhibitions.map((item) => (
             <li
               key={item.id}
@@ -82,6 +88,9 @@ function KakaoMap() {
                 cursor: 'pointer',
                 backgroundColor:
                   selectedMarker?.id === item.id ? '#e0f7fa' : 'white',
+                marginBottom: '10px',
+                borderRadius: '8px',
+                padding: '10px',
               }}
             >
               <strong>{item.title}</strong>
@@ -92,10 +101,10 @@ function KakaoMap() {
         </ul>
       </div>
       <div className="zoom-controls">
-        <button onClick={zoomOut} className="zoom-button">
+        <button onClick={zoomOut} className="zoom-button" disabled={zoomLevel >= 14}>
           -
         </button>
-        <button onClick={zoomIn} className="zoom-button">
+        <button onClick={zoomIn} className="zoom-button" disabled={zoomLevel <= 1}>
           +
         </button>
       </div>

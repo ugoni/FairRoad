@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import interestList from '../data/topicList';
-import '../css/InterestPage.css';
+import '../css/InterestForm.css'
 
-function InterestPage() {
+function InterestForm({ onInterestSubmit }) {
   const [selectedInterests, setSelectedInterests] = useState([]);
-  const navigate = useNavigate();
 
-  const handleInterestClick = (Interest) => {
+  const handleInterestClick = (interest) => {
     setSelectedInterests(prevSelectedInterests =>
-      prevSelectedInterests.includes(Interest)
-        ? prevSelectedInterests.filter(t => t !== Interest)
-        : [...prevSelectedInterests, Interest]
+      prevSelectedInterests.includes(interest)
+        ? prevSelectedInterests.filter(t => t !== interest)
+        : [...prevSelectedInterests, interest]
     );
   };
 
   const handleSubmit = () => {
-    console.log('Selected Interests:', selectedInterests);
-    navigate('/'); 
+    onInterestSubmit(selectedInterests);
   };
 
   return (
@@ -25,13 +22,13 @@ function InterestPage() {
       <div className="auth-form">
         <p style={{ fontWeight: 'bold', fontSize: '2em', marginBottom: '0' }}>Choose your interests</p>
         <div className="interest-container">
-          {Object.values(interestList).flat().map(Interest => (
+          {Object.values(interestList).flat().map(interest => (
             <button
-              key={Interest}
-              className={`interest-btn ${selectedInterests.includes(Interest) ? 'selected' : ''}`}
-              onClick={() => handleInterestClick(Interest)}
+              key={interest}
+              className={`interest-btn ${selectedInterests.includes(interest) ? 'selected' : ''}`}
+              onClick={() => handleInterestClick(interest)}
             >
-              {Interest}
+              {interest}
             </button>
           ))}
         </div>
@@ -48,4 +45,4 @@ function InterestPage() {
   );
 }
 
-export default InterestPage;
+export default InterestForm;
