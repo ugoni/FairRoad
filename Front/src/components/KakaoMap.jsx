@@ -78,7 +78,7 @@ function KakaoMap() {
         )}
       </Map>
       <div className="map-floating-list">
-        <ul className="list-group">
+        <ul className="list-unstyled">
           {visibleExhibitions.map((item) => (
             <li
               key={item.id}
@@ -88,6 +88,9 @@ function KakaoMap() {
                 cursor: 'pointer',
                 backgroundColor:
                   selectedMarker?.id === item.id ? '#e0f7fa' : 'white',
+                marginBottom: '10px',
+                borderRadius: '8px',
+                padding: '10px',
               }}
             >
               <strong>{item.title}</strong>
