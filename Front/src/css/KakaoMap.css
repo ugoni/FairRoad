@@ -14,6 +14,23 @@
   z-index: 10;
 }
 
+.map-floating-list li {
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.map-floating-list li.selected {
+  background-color: #e0f7fa;
+  transform: scale(1.05);
+  opacity: 1;
+  font-weight: bold;
+}
+
+.map-floating-list li.dimmed {
+  transform: scale(0.95);
+  opacity: 0.6;
+}
+
 .zoom-controls {
   position: absolute;
   bottom: 20px;

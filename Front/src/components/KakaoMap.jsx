@@ -8,6 +8,7 @@ function KakaoMap() {
   const [bounds, setBounds] = useState(null);
   const [zoomLevel, setZoomLevel] = useState(8);
   const mapRef = useRef();
+  const listRef = useRef();
 
   const handleBoundsChanged = (map) => {
     const newBounds = map.getBounds();
@@ -47,6 +48,21 @@ function KakaoMap() {
     setZoomLevel(newLevel);
   };
 
+React.useEffect(() => {
+  const handleClickOutside = (e) => {
+    if (
+      listRef.current &&
+      !listRef.current.contains(e.target) &&
+      !mapRef.current?.container.contains(e.target)
+    ) {
+      setSelectedMarker(null);
+    }
+  };
+
+  window.addEventListener('click', handleClickOutside);
+  return () => window.removeEventListener('click', handleClickOutside);
+}, []);
+
   return (
     <div className="map-wrapper">
       <Map
@@ -77,12 +93,19 @@ function KakaoMap() {
           </MapInfoWindow>
         )}
       </Map>
-      <div className="map-floating-list">
+      <div className="map-floating-list" ref={listRef}>
         <ul className="list-unstyled">
-          {visibleExhibitions.map((item) => (
+          {visibleExhibitions.map((item) => {
+            const isSelected = selectedMarker?.id === item.id;
+            const className = [
+              'list-group-item',
+              'list-group-item-action',
+              isSelected ? "selected" : selectedMarker ? "dimmed" : ""
+            ].join(' ');
+            return (
             <li
               key={item.id}
-              className="list-group-item list-group-item-action"
+              className={className}
               onClick={() => setSelectedMarker(item)}
               style={{
                 cursor: 'pointer',
@@ -97,7 +120,8 @@ function KakaoMap() {
               <br />
               <small>{item.address}</small>
             </li>
-          ))}
+            );
+        })}
         </ul>
       </div>
       <div className="zoom-controls">
