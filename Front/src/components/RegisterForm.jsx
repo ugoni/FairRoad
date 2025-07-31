@@ -1,36 +1,32 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { register } from '../api/auth';
+import { Link } from 'react-router-dom';
 import '../css/AuthPage.css';
 import appleIcon from '../assets/appleIcon.png';
 import googleIcon from '../assets/googleIcon.jpg';
 import kakaoIcon from '../assets/kakaoIcon.jpg';
 import naverIcon from '../assets/naverIcon.png';
-import Privacy from '../components/Privacy';
+import Privacy from './Privacy';
 
-function RegisterPage() {
+function RegisterForm({ onRegisterSuccess }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [nickname, setNickname] = useState('');
-  const navigate = useNavigate();
   const [agreed, setAgreed] = useState(false);
-   const [showPrivacy, setShowPrivacy] = useState(false);
-  const handleSubmit = async (e) => {
+  const [showPrivacy, setShowPrivacy] = useState(false);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      await register({ email, password, nickname });
-      navigate('/interest');
-    } catch (error) {
-      console.error('Registration failed:', error);
-    }
+    onRegisterSuccess({ email, password, nickname });
   };
+
   const isFormValid =
     email.trim() !== '' &&
     nickname.trim() !== '' &&
     password.trim() !== '' &&
     password === passwordConfirm &&
     agreed;
+
   return (
     <div className="auth-container">
       <div className="auth-form">
@@ -127,4 +123,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default RegisterForm;
