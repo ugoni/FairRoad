@@ -86,9 +86,12 @@ React.useEffect(() => {
             position={selectedMarker.latlng}
             onClose={() => setSelectedMarker(null)}
           >
-            <div style={{ padding: '10px', fontSize: '12px' }}>
-              <h4>{selectedMarker.title}</h4>
-              <p>{selectedMarker.address}</p>
+            <div style={{ padding: '10px'}}>
+              <h4 style={{ fontSize: '16px' }}>{selectedMarker.title}</h4>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <p style={{ fontSize: '12px' }}>{selectedMarker.address}</p>
+                <p style={{ fontSize: '12px' }}>{selectedMarker.date}</p>
+              </div>
             </div>
           </MapInfoWindow>
         )}
@@ -116,9 +119,11 @@ React.useEffect(() => {
                 padding: '10px',
               }}
             >
-              <strong>{item.title}</strong>
-              <br />
-              <small>{item.address}</small>
+              <strong style={{ fontSize: '16px' }}>{item.title}</strong>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <small style={{ fontSize: '12px' }}>{item.address}</small>
+                <small style={{ fontSize: '12px' }}>{item.date}</small>
+              </div>
             </li>
             );
         })}

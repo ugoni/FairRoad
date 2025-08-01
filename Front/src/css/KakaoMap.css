@@ -9,7 +9,7 @@
   top: 20px;
   right: 20px;
   width: 280px;
-  max-height: 360px;
+  max-height: 500px;
   overflow-y: auto;
   z-index: 10;
 }
