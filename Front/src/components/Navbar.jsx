@@ -22,12 +22,12 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="navbar px-3 dark-divider" style={{ backgroundColor: '#ffffff' }}>  
+    <nav className="navbar px-3 dark-divider">  
       <div className="container-fluid d-flex justify-content-between align-items-center">
         {/* 로고와 홈 아이콘 */}
         <div className="d-flex align-items-center">
           <Link className="navbar-brand" to="/">
-            <img src={slogan} alt="Slogan" style={{ width: '100px' }} />
+            <img src={slogan} alt="Slogan" />
           </Link>
           <Link to="/">
             <img width="30" height="30" src="https://img.icons8.com/fluency-systems-regular/48/135b65/home--v1.png" alt="home--v1"/>
@@ -47,14 +47,8 @@ function Navbar() {
               aria-label="Search"
             />
             <button
-              className="btn btn-outline-primary btn-sm p-1"
+              className="btn btn-outline-primary btn-sm p-1 search-button"
               type="submit"
-              style={{
-                border: 'none',
-                background: 'none',
-                padding: 0,
-                outline: 'none',
-              }}
             >
             <img width="25" height="25" 
                 src="https://img.icons8.com/ios-filled/50/135b65/search.png" alt="search"/>
@@ -64,13 +58,6 @@ function Navbar() {
             <button
               className="menu-button"
               onClick={toggleMenu}
-              style={{
-                background: 'none',
-                border: 'none',
-                padding: 0,
-                margin: 0,
-                cursor: 'pointer',
-              }}
             >
             <img width="25" height="25" 
                 src="https://img.icons8.com/ios-filled/50/135b65/menu.png" alt="menu"/>
@@ -78,13 +65,6 @@ function Navbar() {
             {showMenu && (
               <ul
                 className="dropdown-menu show"
-                style={{
-                  display: 'block',
-                  position: 'absolute',
-                  right: 0,
-                  top: '100%',
-                  zIndex: 1000,
-                }}
               >
                 <li><Link className="dropdown-item" to="/mypage">마이페이지</Link></li>
                 <li><Link className="dropdown-item" to="/calendar">캘린더</Link></li>
