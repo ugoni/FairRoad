@@ -13,7 +13,7 @@ function ExhibitionList({ exhibition }) {
           <h5 className="list-title">{exhibition.name}</h5>
           <p className="list-location">{exhibition.place}</p>
           <p className="list-date">{exhibition.date}</p>
-          <p className="list-details">----------------Details-----------------</p>
+          <p className="list-details">-------------Details-------------</p>
         </div>
       </div>
     </div>
