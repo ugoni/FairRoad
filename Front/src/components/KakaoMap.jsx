@@ -67,7 +67,7 @@ React.useEffect(() => {
     <div className="map-wrapper">
       <Map
         center={{ lat: 37.5665, lng: 126.978 }}
-        style={{ width: '100%', height: '400px', borderRadius: '12px', border: '2px solid #ccc' }}
+        className="map-container"
         level={zoomLevel}
         onBoundsChanged={handleBoundsChanged}
         onClick={() => setSelectedMarker(null)}
@@ -86,9 +86,12 @@ React.useEffect(() => {
             position={selectedMarker.latlng}
             onClose={() => setSelectedMarker(null)}
           >
-            <div style={{ padding: '10px', fontSize: '12px' }}>
-              <h4>{selectedMarker.title}</h4>
-              <p>{selectedMarker.address}</p>
+            <div className="info-window-content">
+              <h4 className="info-window-title">{selectedMarker.title}</h4>
+              <div className="info-window-details">
+                <p className="info-window-address">{selectedMarker.address}</p>
+                <p className="info-window-date">{selectedMarker.date}</p>
+              </div>
             </div>
           </MapInfoWindow>
         )}
@@ -107,18 +110,12 @@ React.useEffect(() => {
               key={item.id}
               className={className}
               onClick={() => setSelectedMarker(item)}
-              style={{
-                cursor: 'pointer',
-                backgroundColor:
-                  selectedMarker?.id === item.id ? '#e0f7fa' : 'white',
-                marginBottom: '10px',
-                borderRadius: '8px',
-                padding: '10px',
-              }}
             >
-              <strong>{item.title}</strong>
-              <br />
-              <small>{item.address}</small>
+              <strong className="list-item-title">{item.title}</strong>
+              <div className="list-item-content">
+                <small className="list-item-address">{item.address}</small>
+                <small className="list-item-date">{item.date}</small>
+              </div>
             </li>
             );
         })}
