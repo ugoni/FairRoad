@@ -28,7 +28,7 @@ function ExhibitionCard({ exhibition }) {
               width="25" height="20"
               src={
                 bookmarked
-                  ? "https://img.icons8.com/ios-filled/50/fa314a/bookmark-ribbon.png"
+                  ? "https://img.icons8.com/ios-filled/50/1A9BAD/bookmark-ribbon.png"
                   : "https://img.icons8.com/ios/50/1A1A1A/bookmark-ribbon.png" 
               }
               alt="bookmark"

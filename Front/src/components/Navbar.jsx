@@ -5,15 +5,14 @@ import '../css/Navbar.css';
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태 추가 (기본값: 로그아웃됨)
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const menuRef = useRef(null);
 
   const toggleMenu = () => setShowMenu((prev) => !prev);
 
   const handleLogout = () => {
-    // 실제 로그아웃 로직을 여기에 추가해야 합니다.
     setIsLoggedIn(false);
-    setShowMenu(false); // 메뉴 닫기
+    setShowMenu(false);
   };
 
   useEffect(() => {
