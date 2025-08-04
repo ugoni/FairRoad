@@ -5,9 +5,16 @@ import '../css/Navbar.css';
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태 추가 (기본값: 로그아웃됨)
   const menuRef = useRef(null);
 
   const toggleMenu = () => setShowMenu((prev) => !prev);
+
+  const handleLogout = () => {
+    // 실제 로그아웃 로직을 여기에 추가해야 합니다.
+    setIsLoggedIn(false);
+    setShowMenu(false); // 메뉴 닫기
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -63,13 +70,31 @@ function Navbar() {
                 src="https://img.icons8.com/ios-filled/50/135b65/menu.png" alt="menu"/>
             </button>
             {showMenu && (
-              <ul
-                className="dropdown-menu show"
-              >
+              <ul className="dropdown-menu show">
+                <li className="dropdown-item-no-hover">
+                  <div className="profile-section">
+                    <img
+                      width="40"
+                      height="40"
+                      src="https://img.icons8.com/ios-glyphs/90/user-male-circle.png"
+                      alt="user-profile"
+                      className="profile-pic"
+                    />
+                    {isLoggedIn ? (
+                      <button onClick={handleLogout} className="btn btn-link logout-button">로그아웃</button>
+                    ) : (
+                      <Link to="/login" onClick={() => setShowMenu(false)} className="btn btn-primary login-button">로그인</Link>
+                    )}
+                  </div>
+                </li>
+                <li><hr className="dropdown-divider" /></li>
                 <li><Link className="dropdown-item" to="/mypage">마이페이지</Link></li>
+                <li><hr className="dropdown-divider" /></li>
+                <li><Link className="dropdown-item" to="/explore">탐색</Link></li>
+                <li><hr className="dropdown-divider" /></li>
                 <li><Link className="dropdown-item" to="/calendar">캘린더</Link></li>
+                <li><hr className="dropdown-divider" /></li>
                 <li><Link className="dropdown-item" to="/settings">설정</Link></li>
-                <li><Link className="dropdown-item" to="/login">로그인</Link></li>
               </ul>
             )}
           </div>
