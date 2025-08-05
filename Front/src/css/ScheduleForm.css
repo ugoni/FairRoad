@@ -1,0 +1,44 @@
+.schedule-form {
+  border: none;
+  border-radius: 8px;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.schedule-input {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #555;
+  padding: 8px 0;
+  margin-top: 8px;
+}
+
+.label-text {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.add-button {
+  padding: 6px 16px;
+  background-color: #1695a3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-button:hover {
+  background-color: #117a86;
+}

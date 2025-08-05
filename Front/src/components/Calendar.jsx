@@ -45,7 +45,18 @@ const Calendar = ({ date }) => {
       <div className="dates">
         {allDates.map((item, idx) => {
           const thisDate = item.date;
-          const dayOfWeek = idx % 7;
+          let fullDate;
+          if (item.isOtherMonth) {
+            if (idx < 7) { 
+              fullDate = new Date(year, month - 1, thisDate);
+            } else { 
+              fullDate = new Date(year, month + 1, thisDate);
+            }
+          } else {
+            fullDate = new Date(year, month, thisDate);
+          }
+
+          const dayOfWeek = fullDate.getDay();
           const isSunday = dayOfWeek === 0;
           const classes = ['date'];
           if (item.isOtherMonth) classes.push('other-month');
