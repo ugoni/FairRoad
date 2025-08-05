@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import slogan from '../assets/slogan.png';
+import profileIcon from '../assets/profileIcon.png';
 import '../css/Navbar.css';
 
 function Navbar() {
@@ -72,13 +73,7 @@ function Navbar() {
               <ul className="dropdown-menu show">
                 <li className="dropdown-item-no-hover">
                   <div className="profile-section">
-                    <img
-                      width="40"
-                      height="40"
-                      src="https://img.icons8.com/ios-glyphs/90/user-male-circle.png"
-                      alt="user-profile"
-                      className="profile-pic"
-                    />
+                   <img src={profileIcon} alt="profileIcon" />
                     {isLoggedIn ? (
                       <button onClick={handleLogout} className="btn btn-link logout-button">로그아웃</button>
                     ) : (

@@ -84,8 +84,9 @@
 }
 
 .login-button {
-  font-size: 14px;
+  font-size: 12px;
   background-color: #1A9BAD;
+  padding: 4px 8px;
 }
 
 .logout-button {
@@ -100,4 +101,12 @@
 
 .dropdown-item-no-hover:hover {
   background-color: transparent !important;
+}
+
+
+.profile-section img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 15px;
 }
