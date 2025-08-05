@@ -1,11 +1,10 @@
 import React from 'react';
 import '../css/Calendar.css';
 
-const Calendar = () => {
+const Calendar = ({ date }) => {
   const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth();
+  const year = date.getFullYear();
+  const month = date.getMonth();
 
   const firstDayOfMonth = new Date(year, month, 1);
   const lastDayOfMonth = new Date(year, month + 1, 0);
