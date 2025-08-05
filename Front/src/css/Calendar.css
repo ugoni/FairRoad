@@ -1,0 +1,51 @@
+.calendar {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  padding: 10px;
+  background-color: #f2f2f2;
+  font-size: 1.2em;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+}
+
+.day {
+  padding: 8px;
+}
+
+.sunday {
+  color: red;
+}
+
+.dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.date {
+  padding: 16px 8px;
+}
+
+.date:nth-child(7n + 1) {
+  border-left: none;
+}
+
+.sunday-date {
+  color: red;
+}
+
+.other-month {
+  color: #aaa;
+}
+
