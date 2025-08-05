@@ -1,3 +1,28 @@
+.calendar-page-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.calendar-section {
+  width: 60%;
+  border: #ccc solid 1px;
+}
+
+.schedule-section {
+  width: 35%;
+}
+
+.calendar-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ccc;   
+  border-radius: 8px;
+  background-color: #fff;
+}
+
 .calendar-nav-button {
   background: none;
   border: none;
@@ -10,7 +35,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin: 20px;
 }
 
 .month-box {
@@ -19,11 +43,13 @@
   background-color: #fff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   font-size: 2em;          
-  font-weight: bold;           
+  font-weight: bold;       
+  margin-top: 10px;    
 }
 
 .nav-buttons {
   display: flex;
+  margin-top: 10px;    
   align-items: center;
 }
 
