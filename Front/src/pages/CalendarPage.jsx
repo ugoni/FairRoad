@@ -16,11 +16,14 @@ const CalendarPage = () => {
   return (
     <div>
       <div className="calendar-header">
-        <span className="month-display">
-         {date.toLocaleString('en-US', { month: 'short' })}' {date.getFullYear()} 
-        </span>
-        <button onClick={handlePrevMonth} className="calendar-nav-button">&lt;</button>
-        <button onClick={handleNextMonth} className="calendar-nav-button">&gt;</button>
+        <div className="month-box">
+            {date.toLocaleString('en-US', { month: 'short' })}' {date.getFullYear()} 
+        </div>
+        <div className="nav-buttons">
+          <button onClick={handlePrevMonth} className="calendar-nav-button">&lt;</button>
+          <span className="dot">•</span>
+          <button onClick={handleNextMonth} className="calendar-nav-button">&gt;</button>
+        </div>
       </div>
       <Calendar date={date} />
     </div>
