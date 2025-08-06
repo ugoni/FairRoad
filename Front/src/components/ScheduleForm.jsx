@@ -1,31 +1,104 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/ScheduleForm.css';
 
-const ScheduleForm = ({ onAddSchedule }) => {
+const ScheduleForm = ({ onAddSchedule, selectedDate }) => {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
+  const [duration, setDuration] = useState('');
+  const [location, setLocation] = useState('');
+  const [etc, setEtc] = useState('');
+  const [showNewEventForm, setShowNewEventForm] = useState(false);
+
+  useEffect(() => {
+    if (selectedDate) {
+      const year = selectedDate.getFullYear();
+      const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+      const day = String(selectedDate.getDate()).padStart(2, '0');
+      setDate(`${year}-${month}-${day}`);
+      setShowNewEventForm(false);
+    }
+  }, [selectedDate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title || !date) return;
-    onAddSchedule({ title, date });
+    onAddSchedule({ title, date, duration, location, etc });
     setTitle('');
-    setDate('');
+    setDuration('');
+    setLocation('');
+    setEtc('');
+    setShowNewEventForm(false);
+  };
+
+  const handleAddEventClick = () => {
+    if (selectedDate) {
+      setShowNewEventForm(true);
+    }
+  };
+
+  const handleCancel = () => {
+    setShowNewEventForm(false);
+    setTitle('');
+    setDuration('');
+    setLocation('');
+    setEtc('');
   };
 
   return (
-    <form className="schedule-form" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        className="schedule-input"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
+    <div className="schedule-form-container">
       <div className="form-footer">
         <span className="label-text">My Schedule</span>
-        <button type="submit" className="add-button">Add event</button>
+        <button type="button" className="add-button" onClick={handleAddEventClick}>Add event</button>
       </div>
-    </form>
+
+      {showNewEventForm && (
+        <div className="schedule-overlay" onClick={handleCancel}>
+          <div className="schedule-box" onClick={(e) => e.stopPropagation()}>
+            <form className="new-event-form" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                className="schedule-input"
+                placeholder="New Event"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                className="schedule-input"
+                placeholder="Duration"
+                value={duration}
+                onChange={(e) => setDuration(e.target.value)}
+              />
+              <input
+                type="text"
+                className="schedule-input"
+                placeholder="Location (optional)"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+              <input
+                type="text"
+                className="schedule-input"
+                placeholder="Add Memo, URL, etc..."
+                value={etc}
+                onChange={(e) => setEtc(e.target.value)}
+              />
+              <div className="new-event-buttons">
+                <button type="submit" className="save-button">Save</button>
+                <button type="button" className="cancel-button" onClick={handleCancel}>Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {!selectedDate && !showNewEventForm && (
+        <div className="no-date-selected">
+          <p>Please select a date.</p>
+        </div>
+      )}
+    </div>
   );
 };
 

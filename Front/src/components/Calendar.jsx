@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/Calendar.css';
 
-const Calendar = ({ date }) => {
+const Calendar = ({ date, onDateClick, selectedDate }) => {
   const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
   const year = date.getFullYear();
   const month = date.getMonth();
@@ -12,7 +12,7 @@ const Calendar = ({ date }) => {
   const firstDayOfWeek = firstDayOfMonth.getDay();
   const lastDateOfMonth = lastDayOfMonth.getDate();
 
-  const prevMonthLastDate = new Date(year, month, 0).getDate(); 
+  const prevMonthLastDate = new Date(year, month, 0).getDate();
 
   const emptyDates = Array.from({ length: firstDayOfWeek }, (_, i) => ({
     date: prevMonthLastDate - firstDayOfWeek + i + 1,
@@ -24,7 +24,7 @@ const Calendar = ({ date }) => {
     isOtherMonth: false
   }));
 
-  const totalCells = 42; 
+  const totalCells = 42;
   const trailingEmptyCount = totalCells - (emptyDates.length + dates.length);
   const trailingEmptyDates = Array.from({ length: trailingEmptyCount }, (_, i) => ({
     date: i + 1,
@@ -32,6 +32,12 @@ const Calendar = ({ date }) => {
   }));
 
   const allDates = [...emptyDates, ...dates, ...trailingEmptyDates];
+
+  const handleDateClick = (fullDate) => {
+    if (onDateClick) {
+      onDateClick(fullDate);
+    }
+  };
 
   return (
     <div className="calendar">
@@ -47,9 +53,9 @@ const Calendar = ({ date }) => {
           const thisDate = item.date;
           let fullDate;
           if (item.isOtherMonth) {
-            if (idx < 7) { 
+            if (idx < 7) {
               fullDate = new Date(year, month - 1, thisDate);
-            } else { 
+            } else {
               fullDate = new Date(year, month + 1, thisDate);
             }
           } else {
@@ -58,12 +64,19 @@ const Calendar = ({ date }) => {
 
           const dayOfWeek = fullDate.getDay();
           const isSunday = dayOfWeek === 0;
+          const isSelected = selectedDate && fullDate.toDateString() === selectedDate.toDateString();
+
           const classes = ['date'];
           if (item.isOtherMonth) classes.push('other-month');
           if (isSunday) classes.push('sunday-date');
+          if (isSelected) classes.push('selected-date');
 
           return (
-            <div key={idx} className={classes.join(' ')}>
+            <div
+              key={idx}
+              className={classes.join(' ')}
+              onClick={() => handleDateClick(fullDate)}
+            >
               {thisDate}
             </div>
           );
