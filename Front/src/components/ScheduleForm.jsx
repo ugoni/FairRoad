@@ -15,12 +15,6 @@ const ScheduleForm = ({ onAddSchedule }) => {
 
   return (
     <form className="schedule-form" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        className="schedule-input"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
       <div className="form-footer">
         <span className="label-text">My Schedule</span>
         <button type="submit" className="add-button">Add event</button>
