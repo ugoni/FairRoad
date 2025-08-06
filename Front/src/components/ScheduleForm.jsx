@@ -55,14 +55,18 @@ const ScheduleForm = ({ onAddSchedule, selectedDate }) => {
         <div className="schedule-overlay" onClick={handleCancel}>
           <div className="schedule-box" onClick={(e) => e.stopPropagation()}>
             <form className="new-event-form" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                className="schedule-input"
-                placeholder="New Event"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-              />
+              <div className='new-event-row'>
+                <input
+                  type="text"
+                  className="schedule-input"
+                  placeholder="New Event"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  required
+                />
+                <button type="submit" className="finish-button">Finish</button>
+              </div>
+              <hr className='schedule-hr'/>
               <input
                 type="text"
                 className="schedule-input"
@@ -70,6 +74,7 @@ const ScheduleForm = ({ onAddSchedule, selectedDate }) => {
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
               />
+              <hr className='schedule-hr'/>
               <input
                 type="text"
                 className="schedule-input"
@@ -77,6 +82,7 @@ const ScheduleForm = ({ onAddSchedule, selectedDate }) => {
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
               />
+              <hr className='schedule-hr'/>
               <input
                 type="text"
                 className="schedule-input"
@@ -85,7 +91,6 @@ const ScheduleForm = ({ onAddSchedule, selectedDate }) => {
                 onChange={(e) => setEtc(e.target.value)}
               />
               <div className="new-event-buttons">
-                <button type="submit" className="save-button">Save</button>
                 <button type="button" className="cancel-button" onClick={handleCancel}>Cancel</button>
               </div>
             </form>
