@@ -42,3 +42,11 @@
 .add-button:hover {
   background-color: #117a86;
 }
+
+.no-date-selected {
+  text-align: center;
+  margin-top: 150px;
+  color: #000;
+  font-weight: bold;
+  font-size: 30px;
+}

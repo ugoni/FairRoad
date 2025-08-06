@@ -28,6 +28,11 @@ const ScheduleForm = ({ onAddSchedule, selectedDate }) => {
         <span className="label-text">My Schedule</span>
         <button type="submit" className="add-button">Add event</button>
       </div>
+      {!selectedDate && (
+        <div className="no-date-selected">
+          <p>Please select a date.</p>
+        </div>
+      )}
     </form>
   );
 };
