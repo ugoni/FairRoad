@@ -6,6 +6,7 @@ import '../css/CalendarPage.css';
 const CalendarPage = () => {
   const [date, setDate] = useState(new Date());
   const [schedules, setSchedules] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const handlePrevMonth = () => {
     setDate(new Date(date.getFullYear(), date.getMonth() - 1, 1));
@@ -17,6 +18,10 @@ const CalendarPage = () => {
 
   const handleAddSchedule = (schedule) => {
     setSchedules([...schedules, schedule]);
+  };
+
+  const handleDateClick = (clickedDate) => {
+    setSelectedDate(clickedDate);
   };
 
   return (
@@ -33,10 +38,10 @@ const CalendarPage = () => {
           </div>
         </div>
         <hr />
-        <Calendar date={date} />
+        <Calendar date={date} onDateClick={handleDateClick} selectedDate={selectedDate} />
       </div>
       <div className="schedule-section">
-        <ScheduleForm onAddSchedule={handleAddSchedule} />
+        <ScheduleForm onAddSchedule={handleAddSchedule} selectedDate={selectedDate} />
       </div>
     </div>
   );

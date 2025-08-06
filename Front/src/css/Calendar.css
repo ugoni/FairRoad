@@ -35,6 +35,12 @@
 
 .date {
   padding: 16px 8px;
+  cursor: pointer;
+}
+
+.date.selected-date {
+  color: #1A9BAD;
+  border-radius: 50%;
 }
 
 .date:nth-child(7n + 1) {

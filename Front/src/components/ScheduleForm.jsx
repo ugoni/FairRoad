@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/ScheduleForm.css';
 
-const ScheduleForm = ({ onAddSchedule }) => {
+const ScheduleForm = ({ onAddSchedule, selectedDate }) => {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
+
+  useEffect(() => {
+    if (selectedDate) {
+      const year = selectedDate.getFullYear();
+      const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+      const day = String(selectedDate.getDate()).padStart(2, '0');
+      setDate(`${year}-${month}-${day}`);
+    }
+  }, [selectedDate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
