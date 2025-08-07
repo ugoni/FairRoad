@@ -1,9 +1,7 @@
-
 import React, { useState } from 'react';
 import Calendar from '../components/Calendar';
 import ScheduleForm from '../components/ScheduleForm';
 import '../css/CalendarPage.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CalendarPage = () => {
   const [date, setDate] = useState(new Date());
