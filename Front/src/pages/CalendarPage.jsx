@@ -26,9 +26,12 @@ const CalendarPage = () => {
     setSelectedDate(clickedDate);
   };
 
+  const [showNewEventForm, setShowNewEventForm] = useState(false);
+
   return (
     <div className="container-fluid calendar-page-container">
-      <div className="row">
+      {showNewEventForm && <div className="background-dim-only" />} 
+      <div className="row content-layer">
         <div className="col-lg-6 calendar-section">
           <div className="calendar-header">
             <div className="month-box">
@@ -44,7 +47,9 @@ const CalendarPage = () => {
           <Calendar date={date} onDateClick={handleDateClick} selectedDate={selectedDate} />
         </div>
         <div className="col-lg-6 schedule-section">
-          <ScheduleForm onAddSchedule={handleAddSchedule} selectedDate={selectedDate} />
+          <ScheduleForm onAddSchedule={handleAddSchedule} selectedDate={selectedDate} 
+            showNewEventForm={showNewEventForm}
+            setShowNewEventForm={setShowNewEventForm}/>
         </div>
       </div>
     </div>
