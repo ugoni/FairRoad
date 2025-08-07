@@ -109,13 +109,37 @@
   margin: 4px 0;
 }
 
+.home-icon {
+  width: 30px;
+  height: 30px;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
 @media (max-width: 768px) {
+  .navbar-brand img {
+    width: 80px;
+  }
+
+  .home-icon {
+    width: 25px;
+    height: 25px;
+  }
+
   .search-input {
     width: 150px;
   }
 }
 
 @media (max-width: 576px) {
+  .navbar-brand img {
+    width: 70px;
+  }
+
+  .home-icon {
+    width: 20px;
+    height: 20px;
+  }
+
   .search-input {
     width: 100px;
   }
