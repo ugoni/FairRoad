@@ -37,7 +37,7 @@ function Navbar() {
             <img src={slogan} alt="Slogan" />
           </Link>
           <Link to="/">
-            <img width="30" height="30" src="https://img.icons8.com/fluency-systems-regular/48/135b65/home--v1.png" alt="home--v1"/>
+            <img src="https://img.icons8.com/fluency-systems-regular/48/135b65/home--v1.png" alt="home--v1" className="home-icon"/>
           </Link>
         </div>
 

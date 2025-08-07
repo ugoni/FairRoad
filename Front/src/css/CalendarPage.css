@@ -1,11 +1,8 @@
 .calendar-page-container {
-  display: flex;
-  justify-content: space-around;
   padding: 20px;
 }
 
 .calendar-section {
-  width: 50%;
   padding: 20px;
   box-sizing: border-box;
   border: 1px solid #ccc;
@@ -13,7 +10,6 @@
 }
 
 .schedule-section {
-  width: 50%;
   padding: 0 10px;
   box-sizing: border-box;
 }
@@ -60,4 +56,10 @@
 
 .dot {
   font-size: 1.5em;
+}
+
+@media (max-width: 991.98px) {
+  .calendar-section {
+    margin-bottom: 20px;
+  }
 }

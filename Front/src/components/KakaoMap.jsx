@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Map, MapMarker, MapInfoWindow } from 'react-kakao-maps-sdk';
 import { dummyExhibitions } from '../data/dummyExhibitions';
 import '../css/KakaoMap.css';
@@ -48,20 +48,20 @@ function KakaoMap() {
     setZoomLevel(newLevel);
   };
 
-React.useEffect(() => {
-  const handleClickOutside = (e) => {
-    if (
-      listRef.current &&
-      !listRef.current.contains(e.target) &&
-      !mapRef.current?.container.contains(e.target)
-    ) {
-      setSelectedMarker(null);
-    }
-  };
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        listRef.current &&
+        !listRef.current.contains(e.target) &&
+        !mapRef.current?.container.contains(e.target)
+      ) {
+        setSelectedMarker(null);
+      }
+    };
 
-  window.addEventListener('click', handleClickOutside);
-  return () => window.removeEventListener('click', handleClickOutside);
-}, []);
+    window.addEventListener('click', handleClickOutside);
+    return () => window.removeEventListener('click', handleClickOutside);
+  }, []);
 
   return (
     <div className="map-wrapper">
@@ -95,40 +95,40 @@ React.useEffect(() => {
             </div>
           </MapInfoWindow>
         )}
+         <div className="map-floating-list" ref={listRef}>
+          <ul className="list-unstyled">
+            {visibleExhibitions.map((item) => {
+              const isSelected = selectedMarker?.id === item.id;
+              const className = [
+                'list-group-item',
+                'list-group-item-action',
+                isSelected ? "selected" : selectedMarker ? "dimmed" : ""
+              ].join(' ');
+              return (
+                <li
+                  key={item.id}
+                  className={className}
+                  onClick={() => setSelectedMarker(item)}
+                >
+                  <strong className="list-item-title">{item.title}</strong>
+                  <div className="list-item-content">
+                    <small className="list-item-address">{item.address}</small>
+                    <small className="list-item-date">{item.date}</small>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="zoom-controls">
+            <button onClick={zoomOut} className="btn btn-light zoom-button" disabled={zoomLevel >= 14}>
+            -
+            </button>
+            <button onClick={zoomIn} className="btn btn-light zoom-button" disabled={zoomLevel <= 1}>
+            +
+            </button>
+        </div>
       </Map>
-      <div className="map-floating-list" ref={listRef}>
-        <ul className="list-unstyled">
-          {visibleExhibitions.map((item) => {
-            const isSelected = selectedMarker?.id === item.id;
-            const className = [
-              'list-group-item',
-              'list-group-item-action',
-              isSelected ? "selected" : selectedMarker ? "dimmed" : ""
-            ].join(' ');
-            return (
-            <li
-              key={item.id}
-              className={className}
-              onClick={() => setSelectedMarker(item)}
-            >
-              <strong className="list-item-title">{item.title}</strong>
-              <div className="list-item-content">
-                <small className="list-item-address">{item.address}</small>
-                <small className="list-item-date">{item.date}</small>
-              </div>
-            </li>
-            );
-        })}
-        </ul>
-      </div>
-      <div className="zoom-controls">
-        <button onClick={zoomOut} className="zoom-button" disabled={zoomLevel >= 14}>
-          -
-        </button>
-        <button onClick={zoomIn} className="zoom-button" disabled={zoomLevel <= 1}>
-          +
-        </button>
-      </div>
     </div>
   );
 }

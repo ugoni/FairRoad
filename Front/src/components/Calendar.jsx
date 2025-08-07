@@ -40,15 +40,15 @@ const Calendar = ({ date, onDateClick, selectedDate }) => {
   };
 
   return (
-    <div className="calendar">
-      <div className="days">
+    <div className="calendar container-fluid">
+      <div className="row days">
         {days.map(day => (
-          <div key={day} className={`day ${day === 'SUN' ? 'sunday' : ''}`}>
+          <div key={day} className={`col text-center day ${day === 'SUN' ? 'sunday' : ''}`}>
             {day}
           </div>
         ))}
       </div>
-      <div className="dates">
+      <div className="row dates">
         {allDates.map((item, idx) => {
           const thisDate = item.date;
           let fullDate;
@@ -66,7 +66,7 @@ const Calendar = ({ date, onDateClick, selectedDate }) => {
           const isSunday = dayOfWeek === 0;
           const isSelected = selectedDate && fullDate.toDateString() === selectedDate.toDateString();
 
-          const classes = ['date'];
+          const classes = ['col', 'text-center', 'date'];
           if (item.isOtherMonth) classes.push('other-month');
           if (isSunday) classes.push('sunday-date');
           if (isSelected) classes.push('selected-date');
@@ -76,6 +76,7 @@ const Calendar = ({ date, onDateClick, selectedDate }) => {
               key={idx}
               className={classes.join(' ')}
               onClick={() => handleDateClick(fullDate)}
+              style={{ flex: '0 0 14.28%', maxWidth: '14.28%' }}
             >
               {thisDate}
             </div>
