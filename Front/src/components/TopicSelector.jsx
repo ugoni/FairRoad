@@ -5,46 +5,52 @@ import '../css/TopicSelector.css';
 function TopicSelector({ selectedTopic: externalSelected, setSelectedTopic: externalSetSelected }) {
   const topics = Object.keys(topicList);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleTopics, setVisibleTopics] = useState(8);
+  const [buttonWidth, setButtonWidth] = useState(0);
 
   const [internalSelected, setInternalSelected] = useState(null);
-
   const selectedTopic = externalSelected !== undefined ? externalSelected : internalSelected;
   const setSelectedTopic = externalSetSelected !== undefined ? externalSetSelected : setInternalSelected;
 
-  const [buttonWidth, setButtonWidth] = useState(0);
   const intervalRef = useRef(null);
   const wrapperRef = useRef(null);
 
-  const visibleTopics = 8;
   const topicButtonGap = 16;
   const maxIndex = topics.length > visibleTopics ? topics.length - visibleTopics : 0;
 
   useEffect(() => {
-    const calculateButtonWidth = () => {
-      if (wrapperRef.current) {
-        const wrapperWidth = wrapperRef.current.offsetWidth;
-        const newButtonWidth = (wrapperWidth - (topicButtonGap * (visibleTopics - 1))) / visibleTopics;
-        setButtonWidth(newButtonWidth);
+    const handleResize = () => {
+      if (window.innerWidth >= 992) {
+        setVisibleTopics(8);
+      } else if (window.innerWidth >= 576) {
+        setVisibleTopics(5);
+      } else {
+        setVisibleTopics(4);
       }
     };
 
-    calculateButtonWidth();
-    window.addEventListener('resize', calculateButtonWidth);
-
-    return () => window.removeEventListener('resize', calculateButtonWidth);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
-    clearInterval(intervalRef.current);
+    if (wrapperRef.current) {
+      const wrapperWidth = wrapperRef.current.offsetWidth;
+      const newButtonWidth = (wrapperWidth - (topicButtonGap * (visibleTopics - 1))) / visibleTopics;
+      setButtonWidth(newButtonWidth);
+    }
+  }, [visibleTopics, wrapperRef.current?.offsetWidth]);
 
+  useEffect(() => {
+    clearInterval(intervalRef.current);
     if (selectedTopic === null && topics.length > visibleTopics) {
       intervalRef.current = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % (maxIndex + 1));
       }, 10000);
     }
-
     return () => clearInterval(intervalRef.current);
-  }, [selectedTopic, topics.length, maxIndex]);
+  }, [selectedTopic, topics.length, visibleTopics, maxIndex]);
 
   const handleTopicClick = (topic) => {
     setSelectedTopic(prev => (prev === topic ? null : topic));
@@ -53,7 +59,6 @@ function TopicSelector({ selectedTopic: externalSelected, setSelectedTopic: exte
   const scrollAmount = buttonWidth + topicButtonGap;
 
   return (
-
     <div className="topic-selector-wrapper" ref={wrapperRef}>
       <h1 className="mb-2 fw-bold mt-4">Collect by Topic</h1>
       <div

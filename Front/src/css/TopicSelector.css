@@ -22,8 +22,8 @@
   cursor: pointer;
   text-align: center;
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out, background-color 0.2s, color 0.2s;
-  width: 100%;
   height: 60px;
+  width: 100%; 
   flex-shrink: 0; 
 }
 
@@ -52,7 +52,7 @@
 }
 
 .btn-interest-submit {
-  width: calc(100% - 40px); /* 양쪽에 각각 20px 여백 */
+  width: calc(100% - 40px);
   padding: 0.75rem;
   font-size: 1.1rem;
   font-weight: bold;
@@ -62,7 +62,7 @@
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin: 2rem 20px 0 20px; /* 상단 2rem, 좌우 20px 여백 */
+  margin: 2rem 20px 0 20px;
 }
 
 .btn-interest-submit:disabled {
@@ -80,29 +80,22 @@
   margin-top: 60px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991.98px) {
   .topic-button {
     height: 50px;
   }
-
-  .topic-emoji {
-    font-size: 0.9rem;
-  }
-
   .topic-name {
     font-size: 0.8rem;
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 575.98px) {
   .topic-button {
     height: 40px;
   }
-
   .topic-emoji {
-    font-size: 0.8rem;
+    display: none;
   }
-
   .topic-name {
     font-size: 0.7rem;
   }
