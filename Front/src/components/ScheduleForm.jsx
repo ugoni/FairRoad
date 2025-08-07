@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import '../css/ScheduleForm.css';
 
-const ScheduleForm = ({ onAddSchedule, selectedDate }) => {
+const ScheduleForm = ({ onAddSchedule, selectedDate,showNewEventForm, setShowNewEventForm }) => {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [duration, setDuration] = useState('');
   const [location, setLocation] = useState('');
   const [etc, setEtc] = useState('');
-  const [showNewEventForm, setShowNewEventForm] = useState(false);
 
   useEffect(() => {
     if (selectedDate) {
@@ -17,7 +16,7 @@ const ScheduleForm = ({ onAddSchedule, selectedDate }) => {
       setDate(`${year}-${month}-${day}`);
       setShowNewEventForm(false);
     }
-  }, [selectedDate]);
+  }, [selectedDate, setShowNewEventForm]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
