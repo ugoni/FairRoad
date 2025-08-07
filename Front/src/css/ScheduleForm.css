@@ -58,7 +58,7 @@
 
 .new-event-buttons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 10px;
 }
 
@@ -69,11 +69,11 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s;
+  color: white;
 }
 
 .finish-button {
   background-color: #1695a3;
-  color: white;
   margin-right: 10px;
   margin-bottom: 10px;
 }
@@ -84,7 +84,6 @@
 
 .cancel-button {
   background-color: #ccc;
-  color: #333;
 }
 
 .cancel-button:hover {
@@ -147,4 +146,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.title{
+  font-size: 2rem;
+  font-weight: bold;
 }
