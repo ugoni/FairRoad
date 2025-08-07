@@ -1,7 +1,9 @@
+
 import React, { useState } from 'react';
 import Calendar from '../components/Calendar';
 import ScheduleForm from '../components/ScheduleForm';
 import '../css/CalendarPage.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CalendarPage = () => {
   const [date, setDate] = useState(new Date());
@@ -25,26 +27,28 @@ const CalendarPage = () => {
   };
 
   return (
-    <div className="calendar-page-container">
-      <div className="calendar-section">
-        <div className="calendar-header">
-          <div className="month-box">
-              {date.toLocaleString('en-US', { month: 'short' })}' {date.getFullYear()} 
+    <div className="container-fluid calendar-page-container">
+      <div className="row">
+        <div className="col-lg-6 calendar-section">
+          <div className="calendar-header">
+            <div className="month-box">
+                {date.toLocaleString('en-US', { month: 'short' })} '{date.getFullYear()} 
+            </div>
+            <div className="nav-buttons">
+              <button onClick={handlePrevMonth} className="btn btn-light calendar-nav-button">&lt;</button>
+              <span className="dot">•</span>
+              <button onClick={handleNextMonth} className="btn btn-light calendar-nav-button">&gt;</button>
+            </div>
           </div>
-          <div className="nav-buttons">
-            <button onClick={handlePrevMonth} className="calendar-nav-button">&lt;</button>
-            <span className="dot">•</span>
-            <button onClick={handleNextMonth} className="calendar-nav-button">&gt;</button>
-          </div>
+          <hr />
+          <Calendar date={date} onDateClick={handleDateClick} selectedDate={selectedDate} />
         </div>
-        <hr />
-        <Calendar date={date} onDateClick={handleDateClick} selectedDate={selectedDate} />
-      </div>
-      <div className="schedule-section">
-        <ScheduleForm onAddSchedule={handleAddSchedule} selectedDate={selectedDate} />
+        <div className="col-lg-6 schedule-section">
+          <ScheduleForm onAddSchedule={handleAddSchedule} selectedDate={selectedDate} />
+        </div>
       </div>
     </div>
   );
 };
 
-export default CalendarPage;
+export default CalendarPage; 
