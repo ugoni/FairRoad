@@ -16,7 +16,7 @@ const ScheduleForm = ({ onAddSchedule, selectedDate,showNewEventForm, setShowNew
       setDate(`${year}-${month}-${day}`);
       setShowNewEventForm(false);
     }
-  }, [selectedDate]);
+  }, [selectedDate, setShowNewEventForm]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
