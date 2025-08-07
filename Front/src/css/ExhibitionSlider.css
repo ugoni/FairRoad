@@ -10,8 +10,8 @@
 .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 200px;
-  height: 200px;
+  width: auto;
+  height: auto;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -73,4 +73,16 @@
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+
+.swiper-pagination-bullet {
+  background-color: #000;
+  width: 10px;
+  height: 10px;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
 }

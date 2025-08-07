@@ -13,20 +13,36 @@ const ExhibitionSlider = () => {
       modules={[Navigation, Pagination]}
       loop={true}
       centeredSlides={true}
-      slidesPerView={3}
       spaceBetween={30}
       navigation={true}
       pagination={{ clickable: true }}
-      watchSlidesProgress={true} // 슬라이드 진행 상태 감시 활성화
+      watchSlidesProgress={true}
       onProgress={(swiper) => {
         swiper.slides.forEach((slide) => {
           const slideProgress = slide.progress;
-          const scale = 1 - Math.abs(slideProgress) * 0.2; // 중앙에서 멀어질수록 작아짐
+          const scale = 1 - Math.abs(slideProgress) * 0.2;
           slide.style.transform = `scale(${scale})`;
-          slide.style.opacity = 1 - Math.abs(slideProgress) * 0.5; // 중앙에서 멀어질수록 투명해짐
+          slide.style.opacity = 1 - Math.abs(slideProgress) * 0.5;
         });
       }}
       className="swiper-container"
+      breakpoints={{
+        // 640px 이상일 때
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        // 768px 이상일 때
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        // 1024px 이상일 때
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        },
+      }}
     >
       {dummyExhibitions.map((exhibition) => (
         <SwiperSlide key={exhibition.id}>
