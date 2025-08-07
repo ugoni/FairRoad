@@ -57,7 +57,7 @@ const ScheduleForm = ({ onAddSchedule, selectedDate,showNewEventForm, setShowNew
               <div className='new-event-row'>
                 <input
                   type="text"
-                  className="schedule-input"
+                  className="schedule-input title"
                   placeholder="New Event"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
