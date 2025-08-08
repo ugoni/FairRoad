@@ -1,3 +1,8 @@
+.exhibition-list-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .exhibition-list {
   display: flex;
   flex-direction: column;
