@@ -1,0 +1,40 @@
+/* DetailPage.css */
+.detail-page {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .detail-header {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .detail-image {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .detail-info {
+    flex: 1;
+    border: 1px solid #ddd;
+  }
+  
+  .detail-info h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .detail-content {
+    margin-top: 20px;
+  }
+  
+  .detail-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
