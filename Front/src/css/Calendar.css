@@ -39,6 +39,10 @@
   border-radius: 50%;
 }
 
+.date.in-range {
+  background-color: #e0f7fa;
+}
+
 .date:nth-child(7n + 1) {
   border-left: none;
 }
