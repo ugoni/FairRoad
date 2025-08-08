@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/Calendar.css';
 
-const Calendar = ({ date, onDateClick, selectedDate }) => {
+const Calendar = ({ date, onDateClick, selectedDate, startDate, endDate }) => {
   const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
   const year = date.getFullYear();
   const month = date.getMonth();
@@ -65,11 +65,13 @@ const Calendar = ({ date, onDateClick, selectedDate }) => {
           const dayOfWeek = fullDate.getDay();
           const isSunday = dayOfWeek === 0;
           const isSelected = selectedDate && fullDate.toDateString() === selectedDate.toDateString();
+          const isInRange = startDate && endDate && fullDate >= startDate && fullDate <= endDate;
 
           const classes = ['col', 'text-center', 'date'];
           if (item.isOtherMonth) classes.push('other-month');
           if (isSunday) classes.push('sunday-date');
           if (isSelected) classes.push('selected-date');
+          if (isInRange) classes.push('in-range');
 
           return (
             <div

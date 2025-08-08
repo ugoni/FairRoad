@@ -118,8 +118,8 @@
   animation: slideUp 0.3s ease-in-out;
   position: relative;
   height: auto;
-  min-height: 520px;
-  margin-top: 240px;
+  min-height: 470px;
+  margin-top: 200px;
 }
 
 @keyframes slideUp {

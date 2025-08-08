@@ -30,13 +30,17 @@
 }
 
 .date {
-  padding: 16px 8px;
+  padding: 16px 8px 8px;
   cursor: pointer;
 }
 
 .date.selected-date {
   color: #1A9BAD;
   border-radius: 50%;
+}
+
+.date.in-range {
+  border-bottom: 2px solid #1A9BAD;
 }
 
 .date:nth-child(7n + 1) {
