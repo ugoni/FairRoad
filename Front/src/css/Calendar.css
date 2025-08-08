@@ -30,7 +30,7 @@
 }
 
 .date {
-  padding: 16px 8px;
+  padding: 16px 8px 8px;
   cursor: pointer;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .date.in-range {
-  background-color: #e0f7fa;
+  border-bottom: 2px solid #1A9BAD;
 }
 
 .date:nth-child(7n + 1) {

@@ -45,10 +45,12 @@ const DetailPage = () => {
               </div>
             </div>
             <div className="col-md-6 mb-2">
-              <p>
-                <strong>Location</strong> {exhibition.place}
-              </p>
-              <div style={{ height: '200px', border: '1px solid black' }}></div>
+              <div className="col-12">
+                <p className="me-4">
+                  <strong>Location</strong> {exhibition.place}
+                </p>
+                <div style={{ height: '200px', border: '1px solid black' }}></div>
+              </div>
             </div>
           </div>
         </div>
