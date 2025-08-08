@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import TopicListPage from './pages/TopicListPage';
 import CalendarPage from './pages/CalendarPage';
+import DetailPage from './pages/DetailPage';
 import Navbar from './components/Navbar';
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/topics" element={<TopicListPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/exhibition/:id" element={<DetailPage />} />
         </Routes>
       </div>
     </Router>

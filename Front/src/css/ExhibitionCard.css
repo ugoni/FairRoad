@@ -1,3 +1,8 @@
+.exhibition-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .exhibition-card {
   display: flex;
   flex-direction: row;
