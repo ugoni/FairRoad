@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
+from sqlalchemy.orm import selectinload
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.session import get_db
@@ -19,8 +20,20 @@ router = APIRouter(prefix="/users", tags=["users"])
     summary="내 프로필 조회",
     description="현재 로그인한 사용자의 프로필 정보를 반환합니다.",
 )
-async def get_profile(current_user: User = Depends(get_current_user)):
-    return current_user
+async def get_profile(db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
+    result = await db.execute(
+        select(User).options(selectinload(User.preferred_tags)).where(User.id == current_user.id)
+    )
+    u = result.scalar_one()
+    return UserProfile(
+        id=u.id,
+        email=u.email,
+        nickname=u.nickname,
+        bio=u.bio,
+        profile_image_url=u.profile_image_url,
+        birthdate=u.birthdate,
+        preferred_tags=[t.name for t in u.preferred_tags if t.tag_type == "preference"],
+    )
 
 
 @router.put(
@@ -45,8 +58,20 @@ async def update_profile(payload: UserUpdate, db: AsyncSession = Depends(get_db)
         current_user.birthdate = payload.birthdate
 
     await db.commit()
-    await db.refresh(current_user)
-    return current_user
+    # reload with preferred_tags
+    result = await db.execute(
+        select(User).options(selectinload(User.preferred_tags)).where(User.id == current_user.id)
+    )
+    u = result.scalar_one()
+    return UserProfile(
+        id=u.id,
+        email=u.email,
+        nickname=u.nickname,
+        bio=u.bio,
+        profile_image_url=u.profile_image_url,
+        birthdate=u.birthdate,
+        preferred_tags=[t.name for t in u.preferred_tags if t.tag_type == "preference"],
+    )
 
 
 @router.get(

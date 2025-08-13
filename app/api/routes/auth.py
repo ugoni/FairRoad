@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy import select
+from sqlalchemy.orm import selectinload
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.session import get_db
@@ -39,9 +40,9 @@ async def signup(payload: RegisterRequest, db: AsyncSession = Depends(get_db)):
         created_at=datetime.now(tz=timezone.utc),
     )
 
-    # 선호 태그 초기화(회원가입 단계에서 전달되면 생성/연결)
+    # 선호/장르 태그 초기화(회원가입 단계에서 전달되면 생성/연결)
+    combined_tags: list[Tag] = []
     if payload.preferred_tags:
-        tag_objs = []
         for name in [n.strip().lower() for n in payload.preferred_tags if n and n.strip()]:
             res = await db.execute(select(Tag).where((Tag.name == name) & (Tag.tag_type == "preference")))
             tag = res.scalar_one_or_none()
@@ -49,22 +50,44 @@ async def signup(payload: RegisterRequest, db: AsyncSession = Depends(get_db)):
                 tag = Tag(name=name, tag_type="preference")
                 db.add(tag)
                 await db.flush()
-            tag_objs.append(tag)
-        user.preferred_tags = tag_objs
-
-    # 전시 장르 태그(분류)는 사용자 엔터티에는 직접 연결하지 않지만 요청으로 전달되면 태그 정의만 미리 만들어둘 수 있습니다.
+            combined_tags.append(tag)
     if payload.genre_tags:
         for name in [n.strip().lower() for n in payload.genre_tags if n and n.strip()]:
             res = await db.execute(select(Tag).where((Tag.name == name) & (Tag.tag_type == "genre")))
             tag = res.scalar_one_or_none()
             if tag is None:
-                db.add(Tag(name=name, tag_type="genre"))
+                tag = Tag(name=name, tag_type="genre")
+                db.add(tag)
                 await db.flush()
+            combined_tags.append(tag)
+    if combined_tags:
+        # 중복 제거 (이름 기준)
+        seen = set()
+        deduped = []
+        for t in combined_tags:
+            key = (t.name, t.tag_type)
+            if key in seen:
+                continue
+            seen.add(key)
+            deduped.append(t)
+        user.preferred_tags = deduped
 
     db.add(user)
     await db.commit()
-    await db.refresh(user)
-    return user
+    # eager load preferred_tags to avoid MissingGreenlet during serialization
+    result = await db.execute(
+        select(User).options(selectinload(User.preferred_tags)).where(User.email == payload.email)
+    )
+    loaded = result.scalar_one()
+    return UserProfile(
+        id=loaded.id,
+        email=loaded.email,
+        nickname=loaded.nickname,
+        bio=loaded.bio,
+        profile_image_url=loaded.profile_image_url,
+        birthdate=loaded.birthdate,
+        preferred_tags=[t.name for t in loaded.preferred_tags if t.tag_type == "preference"],
+    )
 
 
 @router.post(
@@ -89,8 +112,20 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: AsyncSessi
     summary="내 프로필 조회",
     description="Bearer 토큰으로 인증된 현재 사용자 프로필을 반환합니다.",
 )
-async def me(current_user: User = Depends(get_current_user)):
-    return current_user
+async def me(db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
+    result = await db.execute(
+        select(User).options(selectinload(User.preferred_tags)).where(User.id == current_user.id)
+    )
+    u = result.scalar_one()
+    return UserProfile(
+        id=u.id,
+        email=u.email,
+        nickname=u.nickname,
+        bio=u.bio,
+        profile_image_url=u.profile_image_url,
+        birthdate=u.birthdate,
+        preferred_tags=[t.name for t in u.preferred_tags if t.tag_type == "preference"],
+    )
 
 
 @router.delete(
