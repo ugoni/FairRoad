@@ -1,0 +1,28 @@
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+build/
+dist/
+
+# IDE/editor
+.vscode/
+.idea/
+
+# Env/config
+.env
+.env.*
+
+# DB/local data
+dev.db
+*.sqlite3
+postgres_data/
+
+# Logs/cache
+*.log
+logs/
+.pytest_cache/
+.coverage
+
