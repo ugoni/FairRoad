@@ -10,6 +10,7 @@ from app.api.routes import calendar as calendar_routes
 from app.api.routes import search as search_routes
 from app.api.routes import messaging as messaging_routes
 from app.core.config import settings
+from app.api.routes import tags as tags_routes
 from app.db.session import init_models
 
 app = FastAPI(title=settings.app_name)
@@ -30,6 +31,7 @@ app.include_router(social_routes.router)
 app.include_router(calendar_routes.router)
 app.include_router(search_routes.router)
 app.include_router(messaging_routes.router)
+app.include_router(tags_routes.router)
 
 
 @app.on_event("startup")
