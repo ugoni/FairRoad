@@ -1,0 +1,39 @@
+.exhibition-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .exhibition-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pagination {
+  margin-top: 24px;
+  text-align: center;
+  justify-content: center; 
+}
+
+.page-button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: #555;
+  cursor: pointer;
+  padding: 4px 6px;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.page-button:hover {
+  color: #000;
+}
+
+.page-button.active {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #000;
+}
