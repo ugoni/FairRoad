@@ -1,0 +1,81 @@
+.calendar-page-container {
+  padding: 20px;
+}
+
+.calendar-section {
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.schedule-section {
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.calendar-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ccc;   
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.calendar-nav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  margin: 0 10px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.month-box {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-size: 2em;          
+  font-weight: bold;       
+  margin-top: 10px;    
+}
+
+.nav-buttons {
+  display: flex;
+  margin-top: 10px;    
+  align-items: center;
+}
+
+.dot {
+  font-size: 1.5em;
+}
+
+@media (max-width: 991.98px) {
+  .calendar-section {
+    margin-bottom: 20px;
+  }
+}
+
+.background-dim-only {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(187, 181, 181, 0.6);
+  z-index: 998;
+}
+
+.content-layer {
+  position: relative;
+  z-index: 999;
+}

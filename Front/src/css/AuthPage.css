@@ -1,0 +1,255 @@
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+  margin: 30px auto;
+  max-width: 450px;
+  background-color: #EBEBEB;
+  border-radius: 16px;
+}
+
+.auth-container > p {
+  margin-bottom: 0;
+  font-size: 1em;
+}
+
+.auth-form {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+              0 8px 16px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.auth-form h1 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #1c1e21;
+}
+
+.auth-form .form-label {
+  display: none;
+}
+
+.auth-form .form-control {
+  margin-bottom: 0;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #EBEBEB;
+  box-sizing: border-box;
+}
+
+.auth-form input::placeholder {
+  color: #828282;
+}
+
+.auth-form .btn-primary,
+.btn-submit {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 12px;
+  background-color: #1A9BAD;
+  border: 1px solid #000;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-form .btn-primary:hover,
+.btn-submit:hover {
+  background-color: #1A9BAD;
+  border-color: #000;
+  color: white;
+}
+
+.btn-submit.disabled {
+  background-color: #ccc;
+  border-color: #ccc;
+  color:white;
+  cursor: not-allowed;
+}
+
+.links-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.auth-form a {
+  color: #1877f2;
+  text-decoration: none;
+}
+
+.auth-form a:hover {
+  text-decoration: underline;
+}
+
+.divider-with-text {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 24px 0;
+  font-size: 0.9em;
+  color: #828282;
+}
+
+.divider-with-text::before,
+.divider-with-text::after {
+  content: "";
+  flex: 1;
+  border-bottom: 3px solid #ccc;
+}
+
+.divider-with-text::before {
+  margin-right: 12px;
+}
+
+.divider-with-text::after {
+  margin-left: 12px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.checkbox-row label {
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px; /* 버튼 간 간격 */
+  margin-top: 16px;
+}
+
+.social-btn {
+  width: 80px;
+  height: 80px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.social-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.social-btn img {
+  width: 60px;
+  height: 65px;
+  object-fit: contain;
+  border-radius: 15px;
+}
+.privacy-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4); /* 배경을 반투명하게 */
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.privacy-box {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 25px 30px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 70%;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  animation: slideUp 0.3s ease-in-out;
+  position: relative;
+
+}
+.privacy-text {
+  white-space: pre-wrap;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+}
+
+/* 애니메이션 */
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  to {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+
+.privacy-left {
+  text-align: left;
+  margin: 20px auto;
+  line-height: 1.6;
+  max-width: 95%;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+.close-button:hover {
+  color: #ff4d4d;
+}

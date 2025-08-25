@@ -1,0 +1,29 @@
+.interest-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-height: 400px;          
+  overflow-y: auto;         
+  padding-right: 4px;         
+}
+
+.interest-container::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.interest-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.interest-btn.selected {
+  background-color: #1A9BAD;
+  color: white;
+  border-color: #1A9BAD;
+}

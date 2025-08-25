@@ -1,0 +1,88 @@
+.swiper-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: auto;
+  height: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  will-change: transform, opacity;
+}
+
+.swiper-slide-active {
+  opacity: 1;
+}
+
+:root {
+  --swiper-btn-bg: #fff;
+  --swiper-btn-color: #000;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: var(--swiper-btn-bg);
+  width: 40px;
+  height: 40px; 
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--swiper-btn-color); 
+  top: 50%; 
+  border: 1px solid var(--swiper-btn-color); 
+}
+
+.swiper-button-prev::after {
+  content: '←'; 
+  font-size: 20px; 
+  font-weight: bold;
+}
+
+.swiper-button-next::after {
+  content: '→'; 
+  font-size: 20px; 
+  font-weight: bold;
+}
+
+.swiper-button-prev {
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.swiper-button-next {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+.swiper-pagination-bullet {
+  background-color: #000;
+  width: 10px;
+  height: 10px;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}

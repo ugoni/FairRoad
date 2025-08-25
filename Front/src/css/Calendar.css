@@ -1,0 +1,60 @@
+.calendar {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.header {
+  text-align: center;
+  padding: 10px;
+  background-color: #f2f2f2;
+  font-size: 1.2em;
+}
+
+.days {
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+}
+
+.day {
+  padding: 8px;
+}
+
+.sunday {
+  color: red;
+}
+
+.dates {
+  text-align: center;
+}
+
+.date {
+  padding: 16px 8px 8px;
+  cursor: pointer;
+}
+
+.date.selected-date {
+  color: #1A9BAD;
+  border-radius: 50%;
+}
+
+.date.in-range {
+  border-bottom: 2px solid #1A9BAD;
+}
+
+.date:nth-child(7n + 1) {
+  border-left: none;
+}
+
+.sunday-date {
+  color: red;
+}
+
+.other-month {
+  color: #aaa;
+}
+
+.other-month.sunday-date {
+  color: #ff9999;
+}
